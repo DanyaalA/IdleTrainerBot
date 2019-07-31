@@ -17,7 +17,7 @@ namespace IdleTrainerBot.Functions
             MouseHandler.MoveCursor(LocationConstants.HOME_MENU_BUTTON, true);
 
             //Setting Up Boolean Var
-            Boolean[] NotifAvailable = new Boolean[5];
+            Boolean[] NotifAvailable = new Boolean[7];
 
             //Take New Screenshot
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
@@ -40,6 +40,9 @@ namespace IdleTrainerBot.Functions
 
             // Check For Shards
             NotifAvailable[5] = CheckShards();
+
+            // Check Contents of Crate
+            NotifAvailable[6] = CheckCrate();
 
             Boolean[] B = new Boolean[3];
 
@@ -74,7 +77,7 @@ namespace IdleTrainerBot.Functions
         public static Boolean ClaimDailyBonuses()
         {
             // Add: Check time before doing this
-
+            Thread.Sleep(1000);
             MouseHandler.MoveCursor(LocationConstants.HOME_DAILYBONUS_BUTTON, true); 
             Thread.Sleep(500);
             MouseHandler.MoveCursor(LocationConstants.DAILYBONUS_CHECKIN_BUTTON, true);
@@ -101,6 +104,17 @@ namespace IdleTrainerBot.Functions
                 {
                     MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_BUTTON, true);
                     Thread.Sleep(500);
+
+                    while (PixelChecker.CheckPixelValue(LocationConstants.BAG_SHARDS_REWARDS_BUTTON, ColorConstants.BAG_SHARDS_REWARDS_REDINFO_COLOR))
+                    {
+                        MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_REWARDS_BUTTON, true);
+                        Thread.Sleep(500); 
+                        MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_REWARDS_EXCHANGE_BUTTON, true);
+                        Thread.Sleep(1000);
+                        MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_REWARDS_CLAIM_BUTTON, true);
+                        Thread.Sleep(500);
+                    }
+                    MouseHandler.MoveCursor(LocationConstants.BAG_EXIT_BUTTON, true);
                 }
                 else
                 {
@@ -111,6 +125,13 @@ namespace IdleTrainerBot.Functions
             {
                 // Console Log
             }
+
+            return true;
+        }
+
+        public static Boolean CheckCrate()
+        {
+
 
             return true;
         }
