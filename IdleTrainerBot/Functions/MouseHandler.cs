@@ -64,7 +64,15 @@ namespace IdleTrainerBot.Functions
         public static void MoveCursor(Point Location, bool Click = false)
         {
             Point ProcLocation = WindowCapture.GetProcessPosition(GlobalVariables.GLOBAL_PROC_NAME);
-            Cursor.Position = new Point(Location.X + ProcLocation.X, Location.Y + ProcLocation.Y);
+            Point TempPosition = new Point(Location.X + ProcLocation.X, Location.Y + ProcLocation.Y);
+            
+            switch (GlobalVariables.GLOBAL_PROC_NAME)
+            {
+                case "MEmu":
+                    TempPosition = new Point(TempPosition.X + 2, TempPosition.Y + 32);
+                    break;
+            }
+            Cursor.Position = TempPosition;
             if (Click)
             {
                 MouseLeftClick();

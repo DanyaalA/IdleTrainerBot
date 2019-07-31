@@ -9,7 +9,14 @@ namespace IdleTrainerBot.Constants
 {
     class ColorConstants
     {
-        //Menu Colours
+        // Home Colours
+        public static Color HOME_BAG_REDINFO_COLOR = Color.FromArgb(253, 86, 60);
+
+        // Bag Colours
+        public static Color BAG_SHARDS_REDINFO_COLOR = Color.FromArgb(253, 86, 60);
+        public static Color BAG_SHARDS_REWARD_REDINFO_COLOR = Color.FromArgb(253, 86, 60);
+
+        // Menu Colours
         public static Color MENU_MAIL_REDINFO_COLOR = Color.FromArgb(253, 86, 60);
 
         //Home Bottom Colours

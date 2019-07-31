@@ -17,7 +17,7 @@ namespace IdleTrainerBot.Functions
             MouseHandler.MoveCursor(LocationConstants.HOME_MENU_BUTTON, true);
 
             //Setting Up Boolean Var
-            Boolean[] NotifAvailable = new Boolean[3];
+            Boolean[] NotifAvailable = new Boolean[5];
 
             //Take New Screenshot
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
@@ -33,24 +33,13 @@ namespace IdleTrainerBot.Functions
             NotifAvailable[2] = false;
 
             //Mail
-            if (PixelChecker.CheckPixelValue(LocationConstants.MENU_MAIL_BUTTON, ColorConstants.MENU_MAIL_REDINFO_COLOR))
-            {
-                MouseHandler.MoveCursor(LocationConstants.MENU_MAIL_BUTTON, true);
-                Thread.Sleep(500);
-                MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIMALL_BUTTON, true);
+            NotifAvailable[3] = MailCheck();
 
-                while (PixelChecker.CheckPixelValue(LocationConstants.MAIL_DELETE_BUTTON, ColorConstants.MAIL_DELETE_COLOR))
-                {
-                    MouseHandler.MoveCursor(LocationConstants.MAIL_DELETE_BUTTON, true);
-                }
-            }
-            else
-            {
-                //Console Log
-            }
+            //Claim Daily Bonus
+            NotifAvailable[4] = ClaimDailyBonuses();
 
-
-
+            // Check For Shards
+            NotifAvailable[5] = CheckShards();
 
             Boolean[] B = new Boolean[3];
 
@@ -59,8 +48,70 @@ namespace IdleTrainerBot.Functions
             return B;
         }
 
-        public static Boolean MailEmpty()
+        public static Boolean MailCheck()
         {
+            if (PixelChecker.CheckPixelValue(LocationConstants.MENU_MAIL_BUTTON, ColorConstants.MENU_MAIL_REDINFO_COLOR))
+            {
+                MouseHandler.MoveCursor(LocationConstants.MENU_MAIL_BUTTON, true);
+                Thread.Sleep(500);
+                MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIMALL_BUTTON, true);
+                Thread.Sleep(500);
+                MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIM_BUTTON, true);
+
+                while (PixelChecker.CheckPixelValue(LocationConstants.MAIL_DELETE_BUTTON, ColorConstants.MAIL_DELETE_COLOR))
+                {
+                    MouseHandler.MoveCursor(LocationConstants.MAIL_DELETE_BUTTON, true);
+                }
+            }
+            else
+            {
+                // Console Log
+            }
+
+            return true;
+        }
+
+        public static Boolean ClaimDailyBonuses()
+        {
+            // Add: Check time before doing this
+
+            MouseHandler.MoveCursor(LocationConstants.HOME_DAILYBONUS_BUTTON, true); 
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.DAILYBONUS_CHECKIN_BUTTON, true);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.DAILYBONUS_EXIT_BUTTON, true);
+
+            // Claim Daily Money Bonus
+            MouseHandler.MoveCursor(LocationConstants.HOME_MONEYBONUS_BUTTON, true);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.MONEYBONUS_FREE_BUTTON, true);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.MONEYBONUS_EXIT_BUTTON, true);
+
+            return true;
+        }
+
+        public static Boolean CheckShards()
+        {
+            if (PixelChecker.CheckPixelValue(LocationConstants.HOME_BAG_BUTTON, ColorConstants.HOME_BAG_REDINFO_COLOR))
+            {
+                MouseHandler.MoveCursor(LocationConstants.HOME_BAG_BUTTON, true);
+                Thread.Sleep(500);
+                if (PixelChecker.CheckPixelValue(LocationConstants.BAG_SHARDS_BUTTON, ColorConstants.BAG_SHARDS_REDINFO_COLOR))
+                {
+                    MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_BUTTON, true);
+                    Thread.Sleep(500);
+                }
+                else
+                {
+                    MouseHandler.MoveCursor(LocationConstants.BAG_EXIT_BUTTON, true);
+                }
+            }
+            else
+            {
+                // Console Log
+            }
+
             return true;
         }
     }

@@ -70,5 +70,15 @@ namespace IdleTrainerBot
         {
             OpenObjects.OpenItemCenter();
         }
+
+        private void ClaimDailyBonuses_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePlayerInfo.ClaimDailyBonuses();
+        }
+
+        private void CheckShards_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePlayerInfo.CheckShards();
+        }
     }
 }
