@@ -6,7 +6,87 @@
         xmlns:local="clr-namespace:IdleTrainerBot"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Border Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="396*" />
+            </Grid.RowDefinitions>
+
+            <Grid Background="#808080" Margin="9,0,9,0" Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="5 5 0 0">
+                    <TextBlock Margin ="5 2 0 0" FontSize="14" Text="Bot State: Idling" />
+                    <TextBlock Margin ="5 2 0 0" FontSize="14" Text="Version: 1.5" />
+                    <TextBlock Margin ="5 2 0 0" FontSize="14" Text="BotState: Idling" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="0 5 0 0" HorizontalAlignment="Center">
+                    <TextBlock Margin ="5 2 0 0" FontSize="15" Text="For More Information or Support Go To www.TapHeroBot.org" />
+                    <Button Style="{StaticResource RoundButton}" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Margin="0 5 5 0" HorizontalAlignment="Right">
+                    <TextBlock Margin ="5 2 0 0" FontSize="14" Text="Loged In As: Dan" />
+                </StackPanel>
+            </Grid>
+
+            <TabControl Margin="0,5,0,0" Height="310" Grid.Row="1">
+                <TabItem Style="{StaticResource TabTest}" Header="General">
+                    <Grid Background="#f4f4f4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Console Logs" Padding="5 5 0 2"/>
+                            <TextBox Text="{Binding Output, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Width="500" Height="250" Margin="0,0,0,0" IsReadOnly="True" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" />
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                            <GroupBox Header="Controls" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 7" Height="75" Width="210">
+                                <Grid>
+                                    <Button Command="{Binding StartStopCommand}" Height="33" Width="75" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="{Binding Path=StartStopState}" Width="16" Height="16" Margin="2" Grid.Column="0" />
+                                            <StackPanel Grid.Column="1" Margin="2">
+                                                <TextBlock Text="Start" TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Button>
+                                    <Button Command="{Binding HideCommand}" Height="33" Width="75" HorizontalAlignment="Right" Margin="0,0,10,0" Visibility="Visible">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Path Data="M31.687237,10.667C38.231297,14.096666 42.666001,19.463814 42.666001,19.463814 42.666001,19.463814 33.114207,31.052 21.333262,31.052 19.11721,31.052 16.981756,30.641903 14.974,29.97641L17.968835,26.516945C19.064911,26.760542 20.189886,26.903641 21.333262,26.903641 27.822621,26.903641 33.739193,22.471584 37.004723,19.463814 35.21846,17.82023 32.632517,15.76165 29.602583,14.222665 29.836977,14.907658 29.968575,15.631751 29.968575,16.382744 29.968575,20.541902 26.101458,23.913969 21.333262,23.913969 20.97387,23.913969 20.622277,23.889471 20.275885,23.851471L28.911198,13.874968z M21.333649,7.8749999C22.367567,7.8749999,23.375384,7.991208,24.369999,8.1538057L23.543387,9.1103305 23.544586,9.1103305 13.919428,20.229303C13.148615,19.102821 12.698008,17.790342 12.698008,16.382666 12.698008,15.627777 12.82831,14.901288 13.065114,14.213799 10.031464,15.749875 7.4478719,17.817741 5.6614729,19.463716 7.0313649,20.726396 8.8751452,22.238071 11.028781,23.570051L8.3228858,26.695002C3.2681233,23.407453 -2.3841858E-07,19.463716 0,19.463716 -2.3841858E-07,19.463716 9.5521562,7.8749999 21.333649,7.8749999z M34.252037,0L36.449997,1.9038253 6.0807195,36.990002 3.8829998,35.089188z" Stretch="Uniform" Fill="#BBFFFFFF" Width="15" Height="15" Margin="2" Grid.Column="0" RenderTransformOrigin="0.5,0.5" />
+                                            <StackPanel Grid.Column="1" Margin="2">
+                                                <TextBlock Text="Hide" TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                            </GroupBox>
+                        </StackPanel>
+
+                    </Grid>
+                </TabItem>
+
+
+                <TabItem Style="{StaticResource TabTest}" Header="Security" />
+                <TabItem Style="{StaticResource TabTest}" Header="Details" />
+            </TabControl>
+
+        </Grid>
+    </Border>
 </Window>
