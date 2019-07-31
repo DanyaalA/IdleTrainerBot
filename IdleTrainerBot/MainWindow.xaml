@@ -51,6 +51,7 @@
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
                           <Button x:Name="TakeScreen" Content="Take Screenshot" Click="TakeScreen_Click" Width="100" Height="50" Margin="10 0 10 0" />
                           <Button x:Name="CheckSize" Content="Check Size" Click="CheckSize_Click" Width="100" Height="50" Margin="10 0 10 0" />
+                          <Button x:Name="MailCheck" Content="Check Mail" Click="MailCheck_Click" Width="100" Height="50" Margin="10 0 10 0" />
                             <GroupBox Header="Controls" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 7" Height="75" Width="210">
                                 <Grid>
                                     <Button Command="{Binding StartStopCommand}" Height="33" Width="75" HorizontalAlignment="Left" Margin="10,0,0,0">

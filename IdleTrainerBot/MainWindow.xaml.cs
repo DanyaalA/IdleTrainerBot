@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IdleTrainerBot.Functions;
 
 namespace IdleTrainerBot
 {
@@ -53,6 +54,11 @@ namespace IdleTrainerBot
             //}
             
             MessageBox.Show(ProcSize.ToString());
+        }
+
+        private void MailCheck_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePlayerInfo.CheckMenu();
         }
     }
 }

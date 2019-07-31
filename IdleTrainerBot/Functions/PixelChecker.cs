@@ -20,8 +20,8 @@ namespace IdleTrainerBot.Functions
         /// <returns> True/False Depending on weather the pixel value matched.</returns>
         public static Boolean CheckPixelValue(Point LocationToCheck, Color ColourToCheck, Boolean ClickPixel = false)
         {
-            Bitmap bmp = WindowCapture.CaptureApplication("Nox");
-            Point ProcessLocation = WindowCapture.GetProcessPosition("Nox");
+            Bitmap bmp = WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
+            Point ProcessLocation = WindowCapture.GetProcessPosition(GlobalVariables.GLOBAL_PROC_NAME);
             Point PixelScreenLocation = new Point(LocationToCheck.X + ProcessLocation.X, LocationToCheck.Y + ProcessLocation.Y);
 
             if (bmp.GetPixel(LocationToCheck.X, LocationToCheck.Y) == ColourToCheck)
@@ -41,11 +41,11 @@ namespace IdleTrainerBot.Functions
         public static Boolean SearchPixel(Color ColorToSearch, out Point Location)
         {
             //Takes Screencap of NOX
-            Bitmap ScreenCap = WindowCapture.CaptureApplication("Nox");
+            Bitmap ScreenCap = WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
 
             ScreenCap.Save("ScreenTest.bmp");
 
-            Point ProcessLocation = WindowCapture.GetProcessPosition("Nox");
+            Point ProcessLocation = WindowCapture.GetProcessPosition(GlobalVariables.GLOBAL_PROC_NAME);
 
             Location = new Point(0, 0);
 
@@ -74,7 +74,7 @@ namespace IdleTrainerBot.Functions
         /// <returns> returns colour of pixel </returns>
         public static Color GetPixelColor(Point PixelLocation)
         {
-            Bitmap bmp = WindowCapture.CaptureApplication("Nox");
+            Bitmap bmp = WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
             Color PixelValue = bmp.GetPixel(PixelLocation.X, PixelLocation.Y);
 
             return PixelValue;

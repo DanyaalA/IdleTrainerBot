@@ -70,6 +70,7 @@
     <Compile Include="Constants\OtherConstants.cs" />
     <Compile Include="Functions\MouseHandler.cs" />
     <Compile Include="Functions\PixelChecker.cs" />
+    <Compile Include="Functions\UpdatePlayerInfo.cs" />
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="WindowCapture.cs" />
     <Compile Include="MainWindow.xaml.cs">

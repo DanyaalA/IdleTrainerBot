@@ -51,7 +51,7 @@ namespace IdleTrainerBot.Functions
         }
 
 
-        public static void MoveCursor(Point Location, bool Click = false)
+        public static void MoveCursorActualPos(Point Location, bool Click = false)
         {
             Cursor.Position = Location;
             if (Click)
@@ -61,9 +61,9 @@ namespace IdleTrainerBot.Functions
             Thread.Sleep(500);
         }
 
-        public static void MoveCursorRealPos(Point Location, bool Click = false)
+        public static void MoveCursor(Point Location, bool Click = false)
         {
-            Point ProcLocation = WindowCapture.GetProcessPosition("Nox");
+            Point ProcLocation = WindowCapture.GetProcessPosition(GlobalVariables.GLOBAL_PROC_NAME);
             Cursor.Position = new Point(Location.X + ProcLocation.X, Location.Y + ProcLocation.Y);
             if (Click)
             {
