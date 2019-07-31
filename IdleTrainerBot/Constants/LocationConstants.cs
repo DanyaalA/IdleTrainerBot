@@ -18,7 +18,8 @@ namespace IdleTrainerBot.Constants
         // Bag Buttons
         public static Point BAG_SHARDS_BUTTON = new Point(382, 57);
         public static Point BAG_SHARDS_REWARDS_BUTTON = new Point(114, 166);
-
+        public static Point BAG_SHARDS_REWARDS_EXCHANGE_BUTTON = new Point(374, 689);
+        public static Point BAG_SHARDS_REWARDS_CLAIM_BUTTON = new Point(272, 700);
         public static Point BAG_EXIT_BUTTON = new Point(503, 123);
 
         // Daily Bonus Buttons

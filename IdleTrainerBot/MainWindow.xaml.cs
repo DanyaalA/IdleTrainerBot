@@ -58,7 +58,7 @@ namespace IdleTrainerBot
 
         private void MailCheck_Click(object sender, RoutedEventArgs e)
         {
-            UpdatePlayerInfo.CheckMenu();
+            UpdatePlayerInfo.MailCheck();
         }
 
         private void ResetToHome_Click(object sender, RoutedEventArgs e)

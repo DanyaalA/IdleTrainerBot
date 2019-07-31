@@ -42,6 +42,9 @@ namespace IdleTrainerBot.Functions
             // Check For Shards
             NotifAvailable[5] = CheckShards();
 
+            // Check Contents of Crate
+            NotifAvailable[6] = CheckCrate();
+
             Boolean[] B = new Boolean[3];
 
             B[0] = true;
@@ -102,6 +105,17 @@ namespace IdleTrainerBot.Functions
                 {
                     MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_BUTTON, true);
                     Thread.Sleep(500);
+
+                    while (PixelChecker.CheckPixelValue(LocationConstants.BAG_SHARDS_REWARDS_BUTTON, ColorConstants.BAG_SHARDS_REWARDS_REDINFO_COLOR))
+                    {
+                        MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_REWARDS_BUTTON, true);
+                        Thread.Sleep(500); 
+                        MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_REWARDS_EXCHANGE_BUTTON, true);
+                        Thread.Sleep(1000);
+                        MouseHandler.MoveCursor(LocationConstants.BAG_SHARDS_REWARDS_CLAIM_BUTTON, true);
+                        Thread.Sleep(500);
+                    }
+                    MouseHandler.MoveCursor(LocationConstants.BAG_EXIT_BUTTON, true);
                 }
                 else
                 {
@@ -112,6 +126,13 @@ namespace IdleTrainerBot.Functions
             {
                 // Console Log
             }
+
+            return true;
+        }
+
+        public static Boolean CheckCrate()
+        {
+
 
             return true;
         }
