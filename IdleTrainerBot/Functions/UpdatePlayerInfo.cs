@@ -11,13 +11,14 @@ namespace IdleTrainerBot.Functions
     {
         public static Boolean[] CheckMenu()
         {
+            WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
             //Reset To Main Menu
-
+            Main.ResetToHome();
             //Open Menu First
             MouseHandler.MoveCursor(LocationConstants.HOME_MENU_BUTTON, true);
 
             //Setting Up Boolean Var
-            Boolean[] NotifAvailable = new Boolean[5];
+            Boolean[] NotifAvailable = new Boolean[7];
 
             //Take New Screenshot
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
@@ -74,7 +75,7 @@ namespace IdleTrainerBot.Functions
         public static Boolean ClaimDailyBonuses()
         {
             // Add: Check time before doing this
-
+            Thread.Sleep(1000);
             MouseHandler.MoveCursor(LocationConstants.HOME_DAILYBONUS_BUTTON, true); 
             Thread.Sleep(500);
             MouseHandler.MoveCursor(LocationConstants.DAILYBONUS_CHECKIN_BUTTON, true);

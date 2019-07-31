@@ -32,6 +32,7 @@ namespace IdleTrainerBot.Functions
             //Check if Battle Menu is Active and Returns true
             if (isHome())
             {
+                Console.WriteLine("Is Home");
                 return true;
             }
 
@@ -46,9 +47,11 @@ namespace IdleTrainerBot.Functions
             //ReCheck If Home
             if (isHome())
             {
+                Console.WriteLine("Is Home");
                 return true;
             }
 
+            Console.WriteLine("Is Not Home");
             return false;
         }
 

@@ -39,7 +39,7 @@ namespace IdleTrainerBot.Constants
 
         //City Buttons
         public static Point CITY_CURSOR_SCROLL = new Point(284, 119);
-        public static Point CITY_ITEMCENTER_BUTTON = new Point(101, 554);
+        public static Point CITY_ITEMCENTER_BUTTON = new Point(84, 552);
         public static Point CITY_SHOP_BUTTON = new Point(454, 532);
         public static Point CITY_PMGARDEN_BUTTON = new Point(231, 354);
         public static Point CITY_LINKTRADE_BUTTON = new Point(372, 149);
@@ -48,5 +48,9 @@ namespace IdleTrainerBot.Constants
         public static Point MAIL_CLAIMALL_BUTTON = new Point(94, 702);
         public static Point MAIL_DELETE_BUTTON = new Point(353, 707);
         public static Point MAIL_CLAIM_BUTTON = new Point(275, 701);
+
+
+        //Test
+        public static Point GOLD_RED_CLAIM = new Point(525, 9);
     }
 }

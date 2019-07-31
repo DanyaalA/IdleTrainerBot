@@ -68,6 +68,9 @@ namespace IdleTrainerBot.Functions
             
             switch (GlobalVariables.GLOBAL_PROC_NAME)
             {
+                case "Nox":
+                    TempPosition = new Point(TempPosition.X + 2, TempPosition.Y + 32);
+                    break;
                 case "MEmu":
                     TempPosition = new Point(TempPosition.X + 2, TempPosition.Y + 32);
                     break;

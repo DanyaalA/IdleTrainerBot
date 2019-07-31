@@ -28,11 +28,39 @@ namespace IdleTrainerBot.Functions
 
             if (PixelChecker.CheckPixelValue(LocationConstants.CITY_ITEMCENTER_BUTTON, ColorConstants.CITY_ITEMCENTER_COLOR))
             {
-                MouseHandler.MoveCursor(LocationConstants.CITY_ITEMCENTER_BUTTON);
+                MouseHandler.MoveCursor(LocationConstants.CITY_ITEMCENTER_BUTTON, true);
             }
             {
                 //TODO: Max 3 retries before giving up || calling a different function
-                OpenItemCenter();
+                //OpenItemCenter();
+            }
+        }
+
+        public static void OpenShop()
+        {
+            OpenCity();
+
+            if (PixelChecker.CheckPixelValue(LocationConstants.CITY_SHOP_BUTTON, ColorConstants.CITY_SHOP_COLOR))
+            {
+                MouseHandler.MoveCursor(LocationConstants.CITY_SHOP_BUTTON, true);
+            }
+            {
+                //TODO: Max 3 retries before giving up || calling a different function
+                //OpenItemCenter();
+            }
+        }
+
+        public static void OpenPM()
+        {
+            OpenCity();
+
+            if (PixelChecker.CheckPixelValue(LocationConstants.CITY_ITEMCENTER_BUTTON, ColorConstants.CITY_ITEMCENTER_COLOR))
+            {
+                MouseHandler.MoveCursor(LocationConstants.CITY_ITEMCENTER_BUTTON, true);
+            }
+            {
+                //TODO: Max 3 retries before giving up || calling a different function
+                //OpenItemCenter();
             }
         }
     }
