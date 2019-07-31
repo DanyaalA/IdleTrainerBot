@@ -18,6 +18,7 @@ namespace IdleTrainerBot.Functions
         /// Function that resets the game back to the main Menu
         /// </summary>
         /// <returns></returns>
+
         public static Boolean ResetToHome()
         {
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
@@ -53,6 +54,16 @@ namespace IdleTrainerBot.Functions
 
             Console.WriteLine("Is Not Home");
             return false;
+        }
+
+        public static bool ResetToHomePage(int ClicksUntilHome)
+        {
+            for (int i = 0; i < ClicksUntilHome; i++)
+            {
+                MouseHandler.MoveCursor(LocationConstants.HOME_BOTTOM_BATTLE, true);
+            }
+
+            return true;
         }
 
 
