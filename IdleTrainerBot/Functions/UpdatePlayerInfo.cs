@@ -54,22 +54,17 @@ namespace IdleTrainerBot.Functions
 
         public static Boolean MailCheck()
         {
-            if (PixelChecker.CheckPixelValue(LocationConstants.MENU_MAIL_BUTTON, ColorConstants.MENU_MAIL_REDINFO_COLOR))
-            {
-                MouseHandler.MoveCursor(LocationConstants.MENU_MAIL_BUTTON, true);
-                Thread.Sleep(500);
-                MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIMALL_BUTTON, true);
-                Thread.Sleep(500);
-                MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIM_BUTTON, true);
+            MouseHandler.MoveCursor(LocationConstants.HOME_MENU_BUTTON, true);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.MENU_MAIL_BUTTON, true);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIMALL_BUTTON, true);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIM_BUTTON, true);
 
-                while (PixelChecker.CheckPixelValue(LocationConstants.MAIL_DELETE_BUTTON, ColorConstants.MAIL_DELETE_COLOR))
-                {
-                    MouseHandler.MoveCursor(LocationConstants.MAIL_DELETE_BUTTON, true);
-                }
-            }
-            else
+            while (PixelChecker.CheckPixelValue(LocationConstants.MAIL_DELETE_BUTTON, ColorConstants.MAIL_DELETE_COLOR))
             {
-                // Console Log
+                MouseHandler.MoveCursor(LocationConstants.MAIL_DELETE_BUTTON, true);
             }
 
             return true;
