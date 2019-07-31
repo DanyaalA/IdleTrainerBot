@@ -68,7 +68,9 @@
     <Compile Include="Constants\ColorConstants.cs" />
     <Compile Include="Constants\LocationConstants.cs" />
     <Compile Include="Constants\OtherConstants.cs" />
+    <Compile Include="Functions\Main.cs" />
     <Compile Include="Functions\MouseHandler.cs" />
+    <Compile Include="Functions\OpenObjects.cs" />
     <Compile Include="Functions\PixelChecker.cs" />
     <Compile Include="Functions\UpdatePlayerInfo.cs" />
     <Compile Include="GlobalVariables.cs" />

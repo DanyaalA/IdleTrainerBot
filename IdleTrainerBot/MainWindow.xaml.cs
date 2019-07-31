@@ -60,5 +60,15 @@ namespace IdleTrainerBot
         {
             UpdatePlayerInfo.CheckMenu();
         }
+
+        private void ResetToHome_Click(object sender, RoutedEventArgs e)
+        {
+            Main.ResetToHome();
+        }
+
+        private void OpenObjectsTest_Click(object sender, RoutedEventArgs e)
+        {
+            OpenObjects.OpenItemCenter();
+        }
     }
 }

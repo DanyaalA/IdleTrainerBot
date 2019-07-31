@@ -48,10 +48,32 @@
                             <TextBox Text="{Binding Output, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Width="500" Height="250" Margin="0,0,0,0" IsReadOnly="True" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" />
                         </StackPanel>
 
+                        <StackPanel>
+
+                            <Grid Margin="0 8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <Button x:Name="TakeScreen" Content="Take Screenshot" Click="TakeScreen_Click" Width="100" Height="25"/>
+                                    <Button x:Name="CheckSize" Content="Check Size" Click="CheckSize_Click" Width="100" Height="25"/>
+                                    <Button x:Name="ResetToHome" Content="Reset To Home" Click="ResetToHome_Click" Width="100" Height="25"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <Button x:Name="MailCheck" Content="Check Mail" Click="MailCheck_Click" Width="100" Height="25"/>
+
+                                    <Button x:Name="OpenObjectsTest" Content="Open Objects" Click="OpenObjectsTest_Click" Width="100" Height="25"/>
+                                </StackPanel>
+                            </Grid>
+
+                        </StackPanel>
+
+
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                          <Button x:Name="TakeScreen" Content="Take Screenshot" Click="TakeScreen_Click" Width="100" Height="50" Margin="10 0 10 0" />
-                          <Button x:Name="CheckSize" Content="Check Size" Click="CheckSize_Click" Width="100" Height="50" Margin="10 0 10 0" />
-                          <Button x:Name="MailCheck" Content="Check Mail" Click="MailCheck_Click" Width="100" Height="50" Margin="10 0 10 0" />
+
                             <GroupBox Header="Controls" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 7" Height="75" Width="210">
                                 <Grid>
                                     <Button Command="{Binding StartStopCommand}" Height="33" Width="75" HorizontalAlignment="Left" Margin="10,0,0,0">

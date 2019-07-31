@@ -75,7 +75,7 @@ namespace IdleTrainerBot.Functions
         /// <summary>
         /// Resets Castle Screen by scrolling to the bottom
         /// </summary>
-        public static void ResetCastle()
+        public static void ResetCity()
         {
 
             for (int i = 0; i < 8; i++)
