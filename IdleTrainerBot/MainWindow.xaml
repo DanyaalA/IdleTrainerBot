@@ -49,6 +49,8 @@
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                          <Button x:Name="TakeScreen" Content="Take Screenshot" Click="TakeScreen_Click" Width="100" Height="50" Margin="10 0 10 0" />
+                          <Button x:Name="CheckSize" Content="Check Size" Click="CheckSize_Click" Width="100" Height="50" Margin="10 0 10 0" />
                             <GroupBox Header="Controls" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 7" Height="75" Width="210">
                                 <Grid>
                                     <Button Command="{Binding StartStopCommand}" Height="33" Width="75" HorizontalAlignment="Left" Margin="10,0,0,0">
@@ -63,7 +65,7 @@
                                             </StackPanel>
                                         </Grid>
                                     </Button>
-                                    <Button Command="{Binding HideCommand}" Height="33" Width="75" HorizontalAlignment="Right" Margin="0,0,10,0" Visibility="Visible">
+                                    <Button Click="Button_Click" Height="33" Width="75" HorizontalAlignment="Right" Margin="0,0,10,0" Visibility="Visible">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />

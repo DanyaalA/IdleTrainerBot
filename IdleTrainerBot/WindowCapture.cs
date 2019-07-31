@@ -77,7 +77,10 @@ namespace IdleTrainerBot
                                                    new Size(width, height),
                                                    CopyPixelOperation.SourceCopy);
 
-            return bmp;
+
+            
+
+            return ReSizeImage(bmp);
         }
 
         /// <summary>
@@ -146,6 +149,47 @@ namespace IdleTrainerBot
             int height = rect.bottom - rect.top;
 
             return new Size(width, height);
+        }
+
+        //
+        public static string GetProccessName()
+        {
+            if (Process.GetProcessesByName("Nox").Length == 1)
+            {
+                return "Nox";
+            }
+            else if (Process.GetProcessesByName("MEmu").Length == 1)
+            {
+                return "MEmu";
+            }
+            else
+            {
+                return "InvalidProc";
+            }
+        }
+
+        public static Bitmap ReSizeImage(Bitmap ImageToReSize)
+        {
+            // An empty bitmap which will hold the cropped image
+            Bitmap bmp = new Bitmap(540, 960);
+            Rectangle section = new Rectangle(new Point(0, 0), new Size(540, 960));
+            switch (GlobalVariables.GLOBAL_PROC_NAME)
+            {
+                case "Nox":
+                    section = new Rectangle(new Point(2, 32), new Size(540, 960));
+                    break;
+                case "MEmu":
+                    section = new Rectangle(new Point(2, 32), new Size(540, 960));
+                    break;
+            }
+
+            Graphics g = Graphics.FromImage(bmp);
+
+            // Draw the given area (section) of the source image
+            // at location 0,0 on the empty bitmap (bmp)
+            g.DrawImage(ImageToReSize, 0, 0, section, GraphicsUnit.Pixel);
+            // MessageBox.Show($"Text Height: {bmp.Width}x{bmp.Height}");
+            return bmp;
         }
     }
 }
