@@ -9,6 +9,6 @@ namespace IdleTrainerBot
     class GlobalVariables
     {
         //Add Globals here
-
+        public static String GLOBAL_PROC_NAME = "Nox"; //Nox is Default Application
     }
 }
