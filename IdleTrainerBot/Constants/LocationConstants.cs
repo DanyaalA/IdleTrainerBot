@@ -15,6 +15,10 @@ namespace IdleTrainerBot.Constants
         public static Point GLOBAL_BATTLE_FINISHED = new Point(272, 834);
         public static Point GLOBAL_BATTLE_CHECK_WIN = new Point(269, 380);
 
+        // Screen
+        public static Point SCREEN_CITY_TOP = new Point(267, 56);
+        public static Point SCREEN_CITY_BOTTOM = new Point(267, 870); 
+
         // Home Buttons
         public static Point HOME_MENU_BUTTON = new Point(61, 83);
         public static Point HOME_DAILYBONUS_BUTTON = new Point(493, 155);
