@@ -85,14 +85,16 @@ namespace IdleTrainerBot.Functions
             Thread.Sleep(500);
             MouseHandler.MoveCursor(LocationConstants.DAILYBONUS_CHECKIN_BUTTON, true);
             Thread.Sleep(500);
-            MouseHandler.MoveCursor(LocationConstants.DAILYBONUS_EXIT_BUTTON, true);
+            //MouseHandler.MoveCursor(LocationConstants.DAILYBONUS_EXIT_BUTTON, true);
+            Main.ResetToHomePage(1);
 
             // Claim Daily Money Bonus
             MouseHandler.MoveCursor(LocationConstants.HOME_MONEYBONUS_BUTTON, true);
             Thread.Sleep(500);
             MouseHandler.MoveCursor(LocationConstants.MONEYBONUS_FREE_BUTTON, true);
             Thread.Sleep(500);
-            MouseHandler.MoveCursor(LocationConstants.MONEYBONUS_EXIT_BUTTON, true);
+            // MouseHandler.MoveCursor(LocationConstants.MONEYBONUS_EXIT_BUTTON, true);
+            Main.ResetToHomePage(1);
 
             return true;
         }
