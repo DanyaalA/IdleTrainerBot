@@ -67,6 +67,7 @@
                                     <Button x:Name="MailCheck" Content="Check Mail" Click="MailCheck_Click" Width="100" Height="25"/>
                                     <Button x:Name="CheckShards" Content="Check Shards" Click="CheckShards_Click" Width="100" Height="25"/>
                                     <Button x:Name="OpenObjectsTest" Content="Open Objects" Click="OpenObjectsTest_Click" Width="100" Height="25"/>
+                                    <Button x:Name="CheckCrate" Content="Check Crate" Click="CheckCrate_Click" Width="100" Height="25"/>
                                 </StackPanel>
                             </Grid>
 

@@ -80,5 +80,10 @@ namespace IdleTrainerBot
         {
             UpdatePlayerInfo.CheckShards();
         }
+
+        private void CheckCrate_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePlayerInfo.CheckCrate();
+        }
     }
 }
