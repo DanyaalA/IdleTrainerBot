@@ -89,7 +89,7 @@ namespace IdleTrainerBot.Functions
         public static void ResetCity()
         {
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Thread.Sleep(300);
                 MouseWheelDown();

@@ -68,6 +68,7 @@
     <Compile Include="Constants\ColorConstants.cs" />
     <Compile Include="Constants\LocationConstants.cs" />
     <Compile Include="Constants\OtherConstants.cs" />
+    <Compile Include="Functions\Attack.cs" />
     <Compile Include="Functions\Main.cs" />
     <Compile Include="Functions\MouseHandler.cs" />
     <Compile Include="Functions\OpenObjects.cs" />

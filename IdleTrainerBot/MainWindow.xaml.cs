@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,7 +69,8 @@ namespace IdleTrainerBot
 
         private void OpenObjectsTest_Click(object sender, RoutedEventArgs e)
         {
-            OpenObjects.OpenItemCenter();
+            OpenObjects.OpenDispatch();
+            OpenObjects.OpenGym();
         }
 
         private void ClaimDailyBonuses_Click(object sender, RoutedEventArgs e)
@@ -79,6 +81,12 @@ namespace IdleTrainerBot
         private void CheckShards_Click(object sender, RoutedEventArgs e)
         {
             UpdatePlayerInfo.CheckShards();
+        }
+
+        private void AttackHandler_Click(object sender, RoutedEventArgs e)
+        {
+            Thread AttackThread = new Thread(Attack.SkyPillarAttackHandler);
+            AttackThread.Start();
         }
     }
 }

@@ -9,6 +9,11 @@ namespace IdleTrainerBot.Constants
 {
     class ColorConstants
     {
+        //Global
+        public static Color GLOBAL_BATTLE_FINISHED = Color.FromArgb(95, 228, 112);
+        public static Color GLOBAL_BATTLE_WON = Color.FromArgb(212, 69, 71);
+        public static Color GLOBAL_BATTLE_LOST = Color.FromArgb(92, 95, 121);
+
         // Home Colours
         public static Color HOME_BAG_REDINFO_COLOR = Color.FromArgb(253, 86, 60);
 
@@ -28,6 +33,14 @@ namespace IdleTrainerBot.Constants
         public static Color CITY_SHOP_COLOR = Color.FromArgb(102,133,165);
         public static Color CITY_PMGARDEN_COLOR = Color.FromArgb(84, 118, 181);
         public static Color CITY_LINKTRADE_COLOR = Color.FromArgb(233, 230, 228);
+        public static Color CITY_GAMECORNER_COLOR  = Color.FromArgb(147,89,156);
+
+        public static Color CITY_DISPATCH_COLOR = Color.FromArgb(145, 227, 248);
+        public static Color CITY_SAFARIZONE_COLOR = Color.FromArgb(50, 128, 206);
+        public static Color CITY_BATTLELEAGUE_COLOR = Color.FromArgb(201, 229, 254);
+        public static Color CITY_SKYPILAR_COLOR = Color.FromArgb(176, 198, 232);
+        public static Color CITY_BATTLESUBWAY_COLOR = Color.FromArgb(196, 217, 246);
+        public static Color CITY_GYM_COLOR = Color.FromArgb(66, 116, 182);
 
         //Mail Colours
         public static Color MAIL_DELETE_COLOR = Color.FromArgb(251, 97, 93);

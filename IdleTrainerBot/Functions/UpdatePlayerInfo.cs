@@ -55,6 +55,9 @@ namespace IdleTrainerBot.Functions
 
         public static Boolean MailCheck()
         {
+            Main.ResetToHome();
+
+            MouseHandler.MoveCursor(LocationConstants.HOME_MENU_BUTTON, true);
             if (PixelChecker.CheckPixelValue(LocationConstants.MENU_MAIL_BUTTON, ColorConstants.MENU_MAIL_REDINFO_COLOR))
             {
                 MouseHandler.MoveCursor(LocationConstants.MENU_MAIL_BUTTON, true);
@@ -73,7 +76,8 @@ namespace IdleTrainerBot.Functions
                 Console.WriteLine("No Red Info");
             }
 
-
+            Main.ResetToHome();
+            
             return true;
         }
 
@@ -94,7 +98,7 @@ namespace IdleTrainerBot.Functions
             MouseHandler.MoveCursor(LocationConstants.MONEYBONUS_FREE_BUTTON, true);
             Thread.Sleep(500);
             // MouseHandler.MoveCursor(LocationConstants.MONEYBONUS_EXIT_BUTTON, true);
-            Main.ResetToHomePage(1);
+            Main.ResetToHome();
 
             return true;
         }

@@ -8,5 +8,6 @@ namespace IdleTrainerBot.Constants
 {
     class OtherConstants
     {
+        public static int ATACK_RETRY_AMOUNT = 3;
     }
 }

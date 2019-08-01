@@ -9,6 +9,12 @@ namespace IdleTrainerBot.Constants
 {
     class LocationConstants
     {
+        //Global Locations || Locations that are used throughout the game
+        public static Point GLOBAL_BATTLE_SKIP = new Point(514, 830);
+        public static Point GLOBAL_BATTLE_SKIP_CONFIRM = new Point(156, 579);
+        public static Point GLOBAL_BATTLE_FINISHED = new Point(272, 834);
+        public static Point GLOBAL_BATTLE_CHECK_WIN = new Point(269, 380);
+
         // Home Buttons
         public static Point HOME_MENU_BUTTON = new Point(61, 83);
         public static Point HOME_DAILYBONUS_BUTTON = new Point(493, 155);
@@ -44,13 +50,25 @@ namespace IdleTrainerBot.Constants
         public static Point CITY_SHOP_BUTTON = new Point(454, 532);
         public static Point CITY_PMGARDEN_BUTTON = new Point(231, 354);
         public static Point CITY_LINKTRADE_BUTTON = new Point(372, 149);
+        public static Point CITY_GAMECORNER_BUTTON = new Point(66, 801);
+
+        public static Point CITY_DISPATCH_BUTTON = new Point(380, 702);
+        public static Point CITY_SAFARIZONE_BUTTON = new Point(195, 572);
+        public static Point CITY_BATTLELEAGUE_BUTTON = new Point(518, 566);
+        public static Point CITY_SKYPILAR_BUTTON = new Point(108, 465);
+        public static Point CITY_BATTLESUBWAY_BUTTON = new Point(385, 360);
+        public static Point CITY_GYM_BUTTON = new Point(254, 308);
 
         // Mail Buttons
         public static Point MAIL_CLAIMALL_BUTTON = new Point(94, 702);
         public static Point MAIL_DELETE_BUTTON = new Point(353, 707);
         public static Point MAIL_CLAIM_BUTTON = new Point(275, 701);
 
-
+        //Sky Pillar
+        public static Point SKYPILLAR_BATTLE_LOCATION = new Point(424, 676);
+        public static Point SKYPILLAR_ENEMYINFO_BATTLE_CONFIRM = new Point(265, 700);
+        public static Point SKYPILLAR_TEAM_BATTLE_CONFIRM = new Point(269, 869);
+            
         //Test
         public static Point GOLD_RED_CLAIM = new Point(525, 9);
     }
