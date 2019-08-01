@@ -14,6 +14,7 @@ namespace IdleTrainerBot.Functions
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
             //Reset To Main Menu
             Main.ResetToHome();
+
             //Open Menu First
             MouseHandler.MoveCursor(LocationConstants.HOME_MENU_BUTTON, true);
 
@@ -54,18 +55,24 @@ namespace IdleTrainerBot.Functions
 
         public static Boolean MailCheck()
         {
-            MouseHandler.MoveCursor(LocationConstants.HOME_MENU_BUTTON, true);
-            Thread.Sleep(500);
-            MouseHandler.MoveCursor(LocationConstants.MENU_MAIL_BUTTON, true);
-            Thread.Sleep(500);
-            MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIMALL_BUTTON, true);
-            Thread.Sleep(500);
-            MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIM_BUTTON, true);
-
-            while (PixelChecker.CheckPixelValue(LocationConstants.MAIL_DELETE_BUTTON, ColorConstants.MAIL_DELETE_COLOR))
+            if (PixelChecker.CheckPixelValue(LocationConstants.MENU_MAIL_BUTTON, ColorConstants.MENU_MAIL_REDINFO_COLOR))
             {
-                MouseHandler.MoveCursor(LocationConstants.MAIL_DELETE_BUTTON, true);
+                MouseHandler.MoveCursor(LocationConstants.MENU_MAIL_BUTTON, true);
+                Thread.Sleep(500);
+                MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIMALL_BUTTON, true);
+                Thread.Sleep(500);
+                MouseHandler.MoveCursor(LocationConstants.MAIL_CLAIM_BUTTON, true);
+
+                while (PixelChecker.CheckPixelValue(LocationConstants.MAIL_DELETE_BUTTON, ColorConstants.MAIL_DELETE_COLOR))
+                {
+                    MouseHandler.MoveCursor(LocationConstants.MAIL_DELETE_BUTTON, true);
+                }
             }
+            else
+            {
+                Console.WriteLine("No Red Info");
+            }
+
 
             return true;
         }
