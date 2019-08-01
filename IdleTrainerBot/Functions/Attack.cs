@@ -47,7 +47,7 @@ namespace IdleTrainerBot.Functions
             {
                 for (int CurrentTry = 0; CurrentTry < OtherConstants.ATACK_RETRY_AMOUNT; CurrentTry++)
                 {
-                    Main.Sleep(1);
+                    Main.Sleep(2);
                     MouseHandler.MoveCursor(LocationConstants.SKYPILLAR_BATTLE_LOCATION, true);
                     Main.Sleep(1);
                     MouseHandler.MoveCursor(LocationConstants.SKYPILLAR_ENEMYINFO_BATTLE_CONFIRM, true);
