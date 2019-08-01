@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IdleTrainerBot.Constants;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -48,6 +49,30 @@ namespace IdleTrainerBot.Functions
         {
             mouse_event((uint)MouseEventFlags.WHEEL, 0, 0, -120, 0);
             Thread.Sleep(1000);
+        }
+
+        public static void MouseMoveUp()
+        {
+            MouseHandler.MoveCursor(LocationConstants.SCREEN_CITY_TOP, true);
+            Thread.Sleep(500);
+            mouse_event((uint)MouseEventFlags.LEFTDOWN, 0, 0, 0, 0);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.SCREEN_CITY_BOTTOM, true);
+            Thread.Sleep(500);
+            mouse_event((uint)MouseEventFlags.LEFTUP, 0, 0, 0, 0);
+            Thread.Sleep(500);
+        }
+
+        public static void MouseMoveDown()
+        {
+            MouseHandler.MoveCursor(LocationConstants.SCREEN_CITY_BOTTOM, true);
+            Thread.Sleep(500);
+            mouse_event((uint)MouseEventFlags.LEFTDOWN, 0, 0, 0, 0);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.SCREEN_CITY_TOP, true);
+            Thread.Sleep(500);
+            mouse_event((uint)MouseEventFlags.LEFTUP, 0, 0, 0, 0);
+            Thread.Sleep(500);
         }
 
 

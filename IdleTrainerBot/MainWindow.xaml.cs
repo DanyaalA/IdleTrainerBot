@@ -98,5 +98,15 @@ namespace IdleTrainerBot
             Thread AttackThread = new Thread(Attack.SkyPillarAttackHandler);
             AttackThread.Start();
         }
+
+        private void ScrollUp_Click(object sender, RoutedEventArgs e)
+        {
+            MouseHandler.MouseMoveUp();
+        }
+
+        private void ScrollDown_Click(object sender, RoutedEventArgs e)
+        {
+            MouseHandler.MouseMoveDown();
+        }
     }
 }
