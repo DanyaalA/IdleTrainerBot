@@ -46,6 +46,9 @@ namespace IdleTrainerBot.Functions
             // Check Contents of Crate
             NotifAvailable[6] = CheckCrate();
 
+            // Check Achievements
+            NotifAvailable[7] = CheckAchievements();
+
             Boolean[] B = new Boolean[3];
 
             B[0] = true;
@@ -144,6 +147,30 @@ namespace IdleTrainerBot.Functions
             MouseHandler.MoveCursor(LocationConstants.HOME_CRATE_BUTTON, true);
             Thread.Sleep(500);
             MouseHandler.MoveCursor(LocationConstants.CRATE_EXIT_BUTTON, true);
+            Main.ResetToHome();
+            return true;
+        }
+
+        public static Boolean CheckAchievements()
+        {
+            Main.ResetToHome();
+
+            if (PixelChecker.CheckPixelValue(LocationConstants.HOME_PROFILE_BUTTON, ColorConstants.HOME_PROFILE_REDINFO_COLOR))
+            {
+                MouseHandler.MoveCursor(LocationConstants.HOME_PROFILE_BUTTON, true);
+                Thread.Sleep(500);
+
+                while (PixelChecker.CheckPixelValue(LocationConstants.PROFILE_CLAIM_BUTTON, ColorConstants.PROFILE_CLAIM_REDINFO_COLOR))
+                {
+                    MouseHandler.MoveCursor(LocationConstants.PROFILE_CLAIM_BUTTON, true);
+                    Thread.Sleep(500);
+                }
+            }
+            else
+            {
+                // Console Log
+            }
+
             Main.ResetToHome();
             return true;
         }

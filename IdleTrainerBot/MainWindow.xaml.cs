@@ -85,5 +85,10 @@ namespace IdleTrainerBot
         {
             UpdatePlayerInfo.CheckCrate();
         }
+
+        private void CheckAvievements_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePlayerInfo.CheckAchievements();
+        }
     }
 }
