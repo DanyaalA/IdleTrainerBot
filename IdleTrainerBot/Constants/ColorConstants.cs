@@ -16,6 +16,10 @@ namespace IdleTrainerBot.Constants
 
         // Home Colours
         public static Color HOME_BAG_REDINFO_COLOR = Color.FromArgb(253, 86, 60);
+        public static Color HOME_PROFILE_REDINFO_COLOR = Color.FromArgb(253, 86, 60);
+
+        // Profile Colours
+        public static Color PROFILE_CLAIM_REDINFO_COLOR = Color.FromArgb(253, 86, 60);
 
         // Bag Colours
         public static Color BAG_SHARDS_REDINFO_COLOR = Color.FromArgb(253, 86, 60);

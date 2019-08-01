@@ -61,6 +61,7 @@
                                     <Button x:Name="CheckSize" Content="Check Size" Click="CheckSize_Click" Width="100" Height="25"/>
                                     <Button x:Name="ResetToHome" Content="Reset To Home" Click="ResetToHome_Click" Width="100" Height="25"/>
                                     <Button x:Name="ClaimDailyBonuses" Content="Claim Daily Bonuses" Click="ClaimDailyBonuses_Click" Width="100" Height="25"/>
+                                    <Button x:Name="CheckAvievements" Content="Check Achievements" Click="CheckAvievements_Click" Width="100" Height="25"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1">
@@ -68,6 +69,7 @@
                                     <Button x:Name="CheckShards" Content="Check Shards" Click="CheckShards_Click" Width="100" Height="25"/>
                                     <Button x:Name="OpenObjectsTest" Content="Open Objects" Click="OpenObjectsTest_Click" Width="100" Height="25"/>
                                     <Button x:Name="AttackHandler" Content="Attack Handler" Click="AttackHandler_Click" Width="100" Height="25"/>
+                                    <Button x:Name="CheckCrate" Content="Check Crate" Click="CheckCrate_Click" Width="100" Height="25"/>
                                 </StackPanel>
                             </Grid>
 

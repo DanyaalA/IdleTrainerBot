@@ -12,32 +12,32 @@ namespace IdleTrainerBot.Functions
         public static Boolean[] CheckMenu()
         {
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
-            //Reset To Main Menu
+            // Reset To Main Menu
             Main.ResetToHome();
 
-            //Open Menu First
+            // Open Menu First
             MouseHandler.MoveCursor(LocationConstants.HOME_MENU_BUTTON, true);
 
-            //Setting Up Boolean Var
+            // Setting Up Boolean Var
             Boolean[] NotifAvailable = new Boolean[7];
 
-            //Take New Screenshot
+            // Take New Screenshot
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
 
 
-            //Training Center
+            // Training Center
             NotifAvailable[0] = false;
 
-            //Friends
+            // Friends
             NotifAvailable[1] = false;
 
-            //Trainer
+            // Trainer
             NotifAvailable[2] = false;
 
-            //Mail
+            // Mail
             NotifAvailable[3] = MailCheck();
 
-            //Claim Daily Bonus
+            // Claim Daily Bonus
             NotifAvailable[4] = ClaimDailyBonuses();
 
             // Check For Shards
@@ -45,6 +45,9 @@ namespace IdleTrainerBot.Functions
 
             // Check Contents of Crate
             NotifAvailable[6] = CheckCrate();
+
+            // Check Achievements
+            NotifAvailable[7] = CheckAchievements();
 
             Boolean[] B = new Boolean[3];
 
@@ -83,6 +86,8 @@ namespace IdleTrainerBot.Functions
 
         public static Boolean ClaimDailyBonuses()
         {
+            Main.ResetToHome();
+
             // Add: Check time before doing this
             Thread.Sleep(1000);
             MouseHandler.MoveCursor(LocationConstants.HOME_DAILYBONUS_BUTTON, true); 
@@ -100,11 +105,13 @@ namespace IdleTrainerBot.Functions
             // MouseHandler.MoveCursor(LocationConstants.MONEYBONUS_EXIT_BUTTON, true);
             Main.ResetToHome();
 
+            Main.ResetToHome();
             return true;
         }
 
         public static Boolean CheckShards()
         {
+            Main.ResetToHome();
             if (PixelChecker.CheckPixelValue(LocationConstants.HOME_BAG_BUTTON, ColorConstants.HOME_BAG_REDINFO_COLOR))
             {
                 MouseHandler.MoveCursor(LocationConstants.HOME_BAG_BUTTON, true);
@@ -134,14 +141,41 @@ namespace IdleTrainerBot.Functions
             {
                 // Console Log
             }
-
+            Main.ResetToHome();
             return true;
         }
 
         public static Boolean CheckCrate()
         {
+            Main.ResetToHome();
+            MouseHandler.MoveCursor(LocationConstants.HOME_CRATE_BUTTON, true);
+            Thread.Sleep(500);
+            MouseHandler.MoveCursor(LocationConstants.CRATE_EXIT_BUTTON, true);
+            Main.ResetToHome();
+            return true;
+        }
 
+        public static Boolean CheckAchievements()
+        {
+            Main.ResetToHome();
 
+            if (PixelChecker.CheckPixelValue(LocationConstants.HOME_PROFILE_BUTTON, ColorConstants.HOME_PROFILE_REDINFO_COLOR))
+            {
+                MouseHandler.MoveCursor(LocationConstants.HOME_PROFILE_BUTTON, true);
+                Thread.Sleep(500);
+
+                while (PixelChecker.CheckPixelValue(LocationConstants.PROFILE_CLAIM_BUTTON, ColorConstants.PROFILE_CLAIM_REDINFO_COLOR))
+                {
+                    MouseHandler.MoveCursor(LocationConstants.PROFILE_CLAIM_BUTTON, true);
+                    Thread.Sleep(500);
+                }
+            }
+            else
+            {
+                // Console Log
+            }
+
+            Main.ResetToHome();
             return true;
         }
     }

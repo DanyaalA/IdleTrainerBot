@@ -20,6 +20,14 @@ namespace IdleTrainerBot.Constants
         public static Point HOME_DAILYBONUS_BUTTON = new Point(493, 155);
         public static Point HOME_MONEYBONUS_BUTTON = new Point(515,24); 
         public static Point HOME_BAG_BUTTON = new Point(515, 895);
+        public static Point HOME_CRATE_BUTTON = new Point(271, 787);
+        public static Point HOME_PROFILE_BUTTON = new Point(42, 10);
+
+        // Profile Buttons
+        public static Point PROFILE_CLAIM_BUTTON = new Point(488, 590);
+
+        // Crate Buttons
+        public static Point CRATE_EXIT_BUTTON = new Point(505, 73);
 
         // Bag Buttons
         public static Point BAG_SHARDS_BUTTON = new Point(382, 57);

@@ -83,6 +83,16 @@ namespace IdleTrainerBot
             UpdatePlayerInfo.CheckShards();
         }
 
+        private void CheckCrate_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePlayerInfo.CheckCrate();
+        }
+
+        private void CheckAvievements_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePlayerInfo.CheckAchievements();
+        }
+
         private void AttackHandler_Click(object sender, RoutedEventArgs e)
         {
             Thread AttackThread = new Thread(Attack.SkyPillarAttackHandler);
