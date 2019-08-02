@@ -108,5 +108,10 @@ namespace IdleTrainerBot
         {
             MouseHandler.MouseMoveDown();
         }
+
+        private void StartBot_Click(object sender, RoutedEventArgs e)
+        {
+            ConsoleLog.Text = "Test";
+        }
     }
 }

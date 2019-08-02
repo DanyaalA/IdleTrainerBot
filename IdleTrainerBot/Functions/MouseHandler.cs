@@ -66,11 +66,10 @@ namespace IdleTrainerBot.Functions
         public static void MouseMoveDown()
         {
             MouseHandler.MoveCursor(LocationConstants.SCREEN_CITY_BOTTOM, true);
-            Thread.Sleep(500);
             mouse_event((uint)MouseEventFlags.LEFTDOWN, 0, 0, 0, 0);
-            Thread.Sleep(500);
-            MouseHandler.MoveCursor(LocationConstants.SCREEN_CITY_TOP, true);
-            Thread.Sleep(500);
+            mouse_event((uint)MouseEventFlags.MOVE, 0, -400, 0, 0);
+            Thread.Sleep(100);
+            mouse_event((uint)MouseEventFlags.MOVE, 0, -400, 0, 0);
             mouse_event((uint)MouseEventFlags.LEFTUP, 0, 0, 0, 0);
             Thread.Sleep(500);
         }

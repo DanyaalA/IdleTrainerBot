@@ -69,12 +69,14 @@
     <Compile Include="Constants\LocationConstants.cs" />
     <Compile Include="Constants\OtherConstants.cs" />
     <Compile Include="Functions\Attack.cs" />
+    <Compile Include="Functions\BotMain.cs" />
     <Compile Include="Functions\Main.cs" />
     <Compile Include="Functions\MouseHandler.cs" />
     <Compile Include="Functions\OpenObjects.cs" />
     <Compile Include="Functions\PixelChecker.cs" />
     <Compile Include="Functions\UpdatePlayerInfo.cs" />
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="WindowCapture.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -107,6 +109,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
