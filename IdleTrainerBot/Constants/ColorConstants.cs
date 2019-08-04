@@ -13,6 +13,7 @@ namespace IdleTrainerBot.Constants
         public static Color GLOBAL_BATTLE_FINISHED = Color.FromArgb(95, 228, 112);
         public static Color GLOBAL_BATTLE_WON = Color.FromArgb(212, 69, 71);
         public static Color GLOBAL_BATTLE_LOST = Color.FromArgb(92, 95, 121);
+        public static Color GLOBAL_OK_BOTTON = Color.FromArgb(95, 232, 138);
 
         // Home Colours
         public static Color HOME_BAG_REDINFO_COLOR = Color.FromArgb(253, 86, 60);

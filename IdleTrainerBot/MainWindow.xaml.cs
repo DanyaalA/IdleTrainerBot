@@ -111,7 +111,8 @@ namespace IdleTrainerBot
 
         private void StartBot_Click(object sender, RoutedEventArgs e)
         {
-            ConsoleLog.Text = "Test";
+            GlobalVariables.BOT_STARTED = true;
+            BotMain.BotStart();
         }
     }
 }

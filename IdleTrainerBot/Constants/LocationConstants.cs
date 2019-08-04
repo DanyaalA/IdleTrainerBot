@@ -10,6 +10,7 @@ namespace IdleTrainerBot.Constants
     class LocationConstants
     {
         //Global Locations || Locations that are used throughout the game
+        public static Point GLOBAL_BOT_IDLE_CLICK = new Point(275,717);
         public static Point GLOBAL_BATTLE_SKIP = new Point(514, 830);
         public static Point GLOBAL_BATTLE_SKIP_CONFIRM = new Point(156, 579);
         public static Point GLOBAL_BATTLE_FINISHED = new Point(272, 834);
@@ -26,7 +27,7 @@ namespace IdleTrainerBot.Constants
         public static Point HOME_BAG_BUTTON = new Point(515, 895);
         public static Point HOME_CRATE_BUTTON = new Point(271, 787);
         public static Point HOME_PROFILE_BUTTON = new Point(42, 10);
-
+        public static Point HOME_ACCOUNT_ALREADY_LOGGED = new Point(267, 590);
         // Profile Buttons
         public static Point PROFILE_CLAIM_BUTTON = new Point(488, 590);
 
@@ -44,7 +45,7 @@ namespace IdleTrainerBot.Constants
         public static Point DAILYBONUS_CHECKIN_BUTTON = new Point(348, 860);
         public static Point DAILYBONUS_EXIT_BUTTON = new Point(502, 70);
 
-        // 8hr Money Bonus Buttons
+        // 8hr Money Bonus Buttons (Meowth Coin)
         public static Point MONEYBONUS_FREE_BUTTON = new Point(419, 326);
         public static Point MONEYBONUS_EXIT_BUTTON = new Point(501, 168);
 

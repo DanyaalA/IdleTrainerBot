@@ -9,9 +9,18 @@ namespace IdleTrainerBot.Functions
 {
     class Main
     {
-        public static void IdleClick()
+        public static Boolean IdleClick()
         {
-            //Add in code to hold down left click
+            while (GlobalVariables.BOT_STATE == "Idling")
+            {
+                MouseHandler.MoveCursor(LocationConstants.GLOBAL_BOT_IDLE_CLICK, true);
+                //for (int i = 0; i < 50; i++)
+                //{
+                //    MouseHandler.MoveCursor(LocationConstants.GLOBAL_BOT_IDLE_CLICK, true);
+                //}
+            }
+
+            return true;
         }
 
         /// <summary>

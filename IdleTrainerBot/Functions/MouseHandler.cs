@@ -37,7 +37,6 @@ namespace IdleTrainerBot.Functions
             mouse_event((uint)MouseEventFlags.LEFTDOWN, 0, 0, 0, 0);
             Thread.Sleep((new Random().Next(20, 30)));
             mouse_event((uint)MouseEventFlags.LEFTUP, 0, 0, 0, 0);
-            Thread.Sleep(500);
         }
 
         public static void MouseWheelUp()
@@ -82,7 +81,6 @@ namespace IdleTrainerBot.Functions
             {
                 MouseLeftClick();
             }
-            Thread.Sleep(500);
         }
 
         public static void MoveCursor(Point Location, bool Click = false)
@@ -104,7 +102,6 @@ namespace IdleTrainerBot.Functions
             {
                 MouseLeftClick();
             }
-            Thread.Sleep(500);
         }
 
         /// <summary>
