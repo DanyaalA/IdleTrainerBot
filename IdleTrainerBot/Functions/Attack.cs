@@ -39,6 +39,28 @@ namespace IdleTrainerBot.Functions
             }
         }
 
+        public static void AttackBoss()
+        {
+            //Reset To Home
+            WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
+
+            Main.ResetToHome();
+            
+
+            //Check if Button is Next Or Battle Boss
+            if (PixelChecker.CheckPixelValue(LocationConstants.HOME_BOSS_BATTLE_NEXT, ColorConstants.HOME_BOSS_BATTLE_COLOR))
+            {
+                MouseHandler.MoveCursor(LocationConstants.HOME_BOSS_BATTLE_NEXT, true);
+                Main.Sleep(1);
+                MouseHandler.MoveCursor(LocationConstants.HOME_BOSS_IDLE_NEXT, true);
+                Main.Sleep(1);
+            }
+
+            //Attack Boss
+            MouseHandler.MoveCursor(LocationConstants.HOME_BOSS_BATTLE_NEXT, true);
+
+        }
+
         public static void AttackSkyPillar()
         {
             bool AttackingPillar = true;

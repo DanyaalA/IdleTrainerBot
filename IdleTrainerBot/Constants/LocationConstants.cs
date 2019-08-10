@@ -28,6 +28,8 @@ namespace IdleTrainerBot.Constants
         public static Point HOME_CRATE_BUTTON = new Point(271, 787);
         public static Point HOME_PROFILE_BUTTON = new Point(42, 10);
         public static Point HOME_ACCOUNT_ALREADY_LOGGED = new Point(267, 590);
+        public static Point HOME_BOSS_BATTLE_NEXT = new Point(290, 196);
+        public static Point HOME_BOSS_IDLE_NEXT = new Point(288, 634);
         // Profile Buttons
         public static Point PROFILE_CLAIM_BUTTON = new Point(488, 590);
 

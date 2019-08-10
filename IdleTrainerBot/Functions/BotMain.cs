@@ -17,6 +17,11 @@ namespace IdleTrainerBot.Functions
         public static void BotStart()
         {
             //Add Functions to Check if a Supported Emulator Is Open
+            //WindowCapture.GetProccessName(); //Updates Process Name
+            //if (GlobalVariables.GLOBAL_PROC_NAME == "InvalidProc")
+            //{
+            //    System.Windows.Application.Current.Shutdown();
+            //}
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
             //Add Functions to Check For Specific Options
             Console.WriteLine("Bot Started: " + GlobalVariables.BOT_STARTED.ToString());
@@ -61,7 +66,7 @@ namespace IdleTrainerBot.Functions
 
                     task.Start();
 
-                    Thread.Sleep(20000); //Sleep For 15 Seconds Before Continuing
+                    Thread.Sleep(15 * 60000); //Sleep For 15 Minutes Before Continuing
                     GlobalVariables.BOT_STATE = "Checking"; //Setting State
 
                     //Waiting for the Task To Return A Value & Then Double Checking If Task Returned true. TRUE = Idling Stopped, FALSE = Still Idling.
