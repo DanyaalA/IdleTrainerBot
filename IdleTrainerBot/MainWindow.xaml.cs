@@ -95,7 +95,8 @@ namespace IdleTrainerBot
 
         private void AttackHandler_Click(object sender, RoutedEventArgs e)
         {
-            Thread AttackThread = new Thread(Attack.AttackBoss);
+            
+            Thread AttackThread = new Thread(Attack.SkyPillarAttackHandler);
             AttackThread.Start();
         }
 

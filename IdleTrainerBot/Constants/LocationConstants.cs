@@ -16,6 +16,10 @@ namespace IdleTrainerBot.Constants
         public static Point GLOBAL_BATTLE_FINISHED = new Point(272, 834);
         public static Point GLOBAL_BATTLE_CHECK_WIN = new Point(269, 380);
 
+        public static Point GLOBAL_ENEMYINFO_BATTLE_CONFIRM = new Point(265, 700);
+        public static Point GLOBAL_TEAM_BATTLE_CONFIRM = new Point(269, 869);
+
+
         // Screen
         public static Point SCREEN_CITY_TOP = new Point(267, 56);
         public static Point SCREEN_CITY_BOTTOM = new Point(267, 870); 
@@ -81,9 +85,9 @@ namespace IdleTrainerBot.Constants
 
         //Sky Pillar
         public static Point SKYPILLAR_BATTLE_LOCATION = new Point(424, 676);
-        public static Point SKYPILLAR_ENEMYINFO_BATTLE_CONFIRM = new Point(265, 700);
-        public static Point SKYPILLAR_TEAM_BATTLE_CONFIRM = new Point(269, 869);
-            
+        //Gym
+        public static Point GYM_BATTLE_LOCATION = new Point(448, 578);
+
         //Test
         public static Point GOLD_RED_CLAIM = new Point(525, 9);
     }

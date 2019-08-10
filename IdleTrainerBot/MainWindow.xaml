@@ -91,7 +91,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Image Source="{Binding Path=StartStopState}" Width="16" Height="16" Margin="2" Grid.Column="0" />
                                             <StackPanel Grid.Column="1" Margin="2">
-                                                <TextBlock Text="Start" TextAlignment="Center" />
+                                                <TextBlock Text="Start" TextAlignment="Center" HorizontalAlignment="Right" Width="24" />
                                             </StackPanel>
                                         </Grid>
                                     </Button>

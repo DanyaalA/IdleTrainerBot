@@ -31,8 +31,8 @@ namespace IdleTrainerBot.Functions
         public static Boolean ResetToHome()
         {
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
-            //Force Back To Main Menu && Collect any gold (Thats why its ran 10 times)
-            for (int i = 0; i < 10; i++)
+            //Force Back To Main Menu && Collect any gold (Ran 30 Times because it will click nonstop)
+            for (int i = 0; i < 30; i++)
             {
                 MouseHandler.MoveCursor(LocationConstants.HOME_BOTTOM_BATTLE, true);
             }
