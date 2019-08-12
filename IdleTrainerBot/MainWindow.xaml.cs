@@ -96,7 +96,7 @@ namespace IdleTrainerBot
         private void AttackHandler_Click(object sender, RoutedEventArgs e)
         {
             
-            Thread AttackThread = new Thread(Attack.SkyPillarAttackHandler);
+            Thread AttackThread = new Thread(Attack.AttackBoss);
             AttackThread.Start();
         }
 
@@ -114,6 +114,11 @@ namespace IdleTrainerBot
         {
             GlobalVariables.BOT_STARTED = true;
             BotMain.BotStart();
+        }
+
+        private void TextTest_Click(object sender, RoutedEventArgs e)
+        {
+            ImageToText.HomeBoss();
         }
     }
 }

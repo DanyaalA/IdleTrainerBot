@@ -31,6 +31,14 @@ namespace IdleTrainerBot.Functions
         public static Boolean ResetToHome()
         {
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
+
+            //If Screen is stuck on a battle screen this will select it. (Doesn't Check if button is there just clicks it anyways); 
+            // Now thinking about it this could cause problems so i added a check
+            if (PixelChecker.CheckPixelValue(LocationConstants.GLOBAL_BATTLE_FINISHED, ColorConstants.GLOBAL_BATTLE_FINISHED))
+            {
+                MouseHandler.MoveCursor(LocationConstants.GLOBAL_BATTLE_FINISHED, true);
+            }
+
             //Force Back To Main Menu && Collect any gold (Ran 30 Times because it will click nonstop)
             for (int i = 0; i < 30; i++)
             {

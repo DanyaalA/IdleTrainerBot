@@ -24,7 +24,7 @@ namespace IdleTrainerBot.Constants
         public static Color HOME_BOSS_IDLE = Color.FromArgb(255, 186, 99);
 
         //Battles
-        public static Color GYM_BATTLE = Color.FromArgb(95, 232, 152);
+        public static Color GYM_BATTLE = Color.FromArgb(95, 232, 140);
 
         // Profile Colours
         public static Color PROFILE_CLAIM_REDINFO_COLOR = Color.FromArgb(253, 86, 60);

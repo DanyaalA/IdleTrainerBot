@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IdleTrainerBot.Constants;
+using System.Drawing;
 
 namespace IdleTrainerBot.Functions
 {
@@ -27,6 +28,18 @@ namespace IdleTrainerBot.Functions
             
         }
 
+        public static void BattleLeagueAttackHandler()
+        {
+            WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
+
+            Main.ResetToHome();
+
+            OpenObjects.OpenSkyPilar();
+
+            AttackSkyPillar();
+
+        }
+
         public static void GymAttackHandler()
         {
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
@@ -46,18 +59,25 @@ namespace IdleTrainerBot.Functions
             {
                 for (int CurrentTry = 0; CurrentTry < OtherConstants.ATACK_RETRY_AMOUNT; CurrentTry++)
                 {
-                    Main.Sleep(2);
+                    Main.Sleep(5);
 
-                    
+                    var Location = new Point(0, 0);
 
-                    Main.Sleep(1);
-
-                    if (!PixelChecker.CheckPixelValue(LocationConstants.GYM_BATTLE_LOCATION, ColorConstants.GYM_BATTLE))
+                    if (!PixelChecker.SearchPixel(ColorConstants.GYM_BATTLE, out Location))
                     {
-                        GymAttackHandler();
+                        string BattleTest = ImageToText.GymBattleCheck();
+                        if (BattleTest != "Battle")
+                        {
+                            GymAttackHandler();
+                        }
+
+                        MouseHandler.MoveCursor(TextConstants.GYM_BATTLE_START, true);
+                    }
+                    else
+                    {
+                        MouseHandler.MoveCursor(Location, true);
                     }
 
-                    MouseHandler.MoveCursor(LocationConstants.GYM_BATTLE_LOCATION, true);
                     Main.Sleep(1);
                     MouseHandler.MoveCursor(LocationConstants.GLOBAL_ENEMYINFO_BATTLE_CONFIRM, true);
                     Main.Sleep(1);
@@ -102,8 +122,20 @@ namespace IdleTrainerBot.Functions
             }
         }
 
-        public static Boolean CheckWin()
+        /// <summary>
+        /// This function is only called once battle is finished
+        /// </summary>
+        /// <param name="checkAmount"></param>
+        /// <returns></returns>
+        public static Boolean CheckWin(int checkAmount = 1)
         {
+            if (checkAmount == 5)
+            {
+                //Add Handler // Events To Stop This
+                Main.ResetToHome();
+                return false; //Returns False indicating battle was not won although no battle occured.
+            }
+
             if (PixelChecker.CheckPixelValue(LocationConstants.GLOBAL_BATTLE_CHECK_WIN, ColorConstants.GLOBAL_BATTLE_WON))
             {
                 return true;
@@ -114,7 +146,7 @@ namespace IdleTrainerBot.Functions
             }
             else
             {
-                return CheckWin();
+                return CheckWin(checkAmount + 1);
             }
         }
 
@@ -124,16 +156,56 @@ namespace IdleTrainerBot.Functions
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
 
             Main.ResetToHome();
-            
 
-            //Check if Button is Next Or Battle Boss
-            if (PixelChecker.CheckPixelValue(LocationConstants.HOME_BOSS_BATTLE_NEXT, ColorConstants.HOME_BOSS_BATTLE_COLOR))
+            WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
+            string BossStatus = ImageToText.HomeBoss();
+
+            if (BossStatus == "next")
             {
                 MouseHandler.MoveCursor(LocationConstants.HOME_BOSS_BATTLE_NEXT, true);
-                Main.Sleep(1);
+                Main.Sleep(2);
                 MouseHandler.MoveCursor(LocationConstants.HOME_BOSS_IDLE_NEXT, true);
                 Main.Sleep(1);
+                AttackBoss(); //Starts Idling On Next Stage Then Re-Calls Function to Check for updates status
             }
+            else if (BossStatus == "battle")
+            {
+                MouseHandler.MoveCursor(LocationConstants.HOME_BOSS_BATTLE_NEXT, true);
+                Main.Sleep(2);
+                MouseHandler.MoveCursor(LocationConstants.GLOBAL_ENEMYINFO_BATTLE_CONFIRM, true);
+                Main.Sleep(2);
+                MouseHandler.MoveCursor(LocationConstants.GLOBAL_TEAM_BATTLE_CONFIRM, true);
+                Main.Sleep(3);
+
+                MouseHandler.MoveCursor(LocationConstants.GLOBAL_BATTLE_SKIP, true);
+                Main.Sleep(3);
+                MouseHandler.MoveCursor(LocationConstants.GLOBAL_BATTLE_SKIP_CONFIRM, true);
+
+                bool BattleFinished = false;
+
+                while (!BattleFinished)
+                {
+                    //Sleep for 2 seconds and then Check
+                    Main.Sleep(2);
+
+                    if (PixelChecker.CheckPixelValue(LocationConstants.GLOBAL_BATTLE_FINISHED, ColorConstants.GLOBAL_BATTLE_FINISHED))
+                    {
+                        BattleFinished = true;
+                    }
+                }
+
+                bool BattleWon = CheckWin();
+
+                Console.WriteLine("The Outcome of the Battle Win: {0}", BattleWon);
+
+                MouseHandler.MoveCursor(LocationConstants.GLOBAL_BATTLE_FINISHED, true);
+            }
+
+            ////Check if Button is Next Or Battle Boss
+            //if (PixelChecker.CheckPixelValue(LocationConstants.HOME_BOSS_BATTLE_NEXT, ColorConstants.HOME_BOSS_BATTLE_COLOR))
+            //{
+
+            //}
 
             //Attack Boss
             MouseHandler.MoveCursor(LocationConstants.HOME_BOSS_BATTLE_NEXT, true);

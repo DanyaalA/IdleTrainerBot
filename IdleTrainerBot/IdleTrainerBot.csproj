@@ -38,6 +38,9 @@
     <Reference Include="Gma.System.MouseKeyHook, Version=5.6.130.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MouseKeyHook.5.6.0\lib\net40\Gma.System.MouseKeyHook.dll</HintPath>
     </Reference>
+    <Reference Include="IronOcr, Version=4.4.0.21181, Culture=neutral, PublicKeyToken=5f366048dc436899, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronOcr.4.4.0\lib\net40\IronOcr.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -71,8 +74,10 @@
     <Compile Include="Constants\ColorConstants.cs" />
     <Compile Include="Constants\LocationConstants.cs" />
     <Compile Include="Constants\OtherConstants.cs" />
+    <Compile Include="Constants\TextConstants.cs" />
     <Compile Include="Functions\Attack.cs" />
     <Compile Include="Functions\BotMain.cs" />
+    <Compile Include="Functions\ImageToText.cs" />
     <Compile Include="Functions\KeyHandler.cs" />
     <Compile Include="Functions\Main.cs" />
     <Compile Include="Functions\MouseHandler.cs" />

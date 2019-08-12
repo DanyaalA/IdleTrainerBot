@@ -73,6 +73,7 @@
                                     <Button x:Name="OpenObjectsTest" Content="Open Objects" Click="OpenObjectsTest_Click" Width="100" Height="25"/>
                                     <Button x:Name="AttackHandler" Content="Attack Handler" Click="AttackHandler_Click" Width="100" Height="25"/>
                                     <Button x:Name="CheckCrate" Content="Check Crate" Click="CheckCrate_Click" Width="100" Height="25"/>
+                                    <Button x:Name="TextTest" Content="Image To Text" Click="TextTest_Click" Width="100" Height="25"/>
                                 </StackPanel>
                             </Grid>
 

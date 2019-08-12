@@ -15,6 +15,7 @@ namespace IdleTrainerBot.Constants
         public static Point GLOBAL_BATTLE_SKIP_CONFIRM = new Point(156, 579);
         public static Point GLOBAL_BATTLE_FINISHED = new Point(272, 834);
         public static Point GLOBAL_BATTLE_CHECK_WIN = new Point(269, 380);
+        public static Point GLOBAL_LEVEL_BAR = new Point(130, 20);
 
         public static Point GLOBAL_ENEMYINFO_BATTLE_CONFIRM = new Point(265, 700);
         public static Point GLOBAL_TEAM_BATTLE_CONFIRM = new Point(269, 869);
