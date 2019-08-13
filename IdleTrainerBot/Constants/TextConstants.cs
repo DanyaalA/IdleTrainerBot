@@ -12,7 +12,7 @@ namespace IdleTrainerBot.Constants
         public static Point LEVEL_START = new Point(100, 204);
         public static Point GEM_START = new Point(294, 11);
         public static Point GOLD_START = new Point(432, 12);
-        public static Point HOME_BOSS_START = new Point(202, 159);
+        public static Point HOME_BOSS_START = new Point(195, 159);
         public static Point GYM_BATTLE_START = new Point(366, 552);
 
         public static Size LEVEL_START_SIZE = new Size(27, 20);

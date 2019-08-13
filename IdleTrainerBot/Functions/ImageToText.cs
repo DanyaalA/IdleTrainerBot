@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using IronOcr;
 using System.Drawing;
 using IdleTrainerBot.Constants;
+using Tesseract;
 
 namespace IdleTrainerBot.Functions
 {
@@ -51,32 +52,102 @@ namespace IdleTrainerBot.Functions
             return Results.Text;
         }
 
+        public static String ImageToText2(Point Location, Size SizeOfRec, bool EnhanceContrast = true, bool EnchanceResolution = true, bool Advanced = true, bool RotateStraight = false)
+        {
+            Rectangle section = new Rectangle(Location, SizeOfRec);
+
+            Bitmap ScreenCap = WindowCapture.CaptureApplication("Nox");
+            Bitmap ExtractedPart = new Bitmap(section.Width, section.Height);
+
+            Graphics G = Graphics.FromImage(ExtractedPart);
+
+            G.DrawImage(ScreenCap, 0, 0, section, GraphicsUnit.Pixel);
+
+            Bitmap d = new Bitmap(ExtractedPart.Width, ExtractedPart.Height);
+
+            for (int i = 0; i < ExtractedPart.Width; i++)
+            {
+                for (int x = 0; x < ExtractedPart.Height; x++)
+                {
+                    Color oc = ExtractedPart.GetPixel(i, x);
+                    int grayScale = (int)((oc.R * 0.3) + (oc.G * 0.59) + (oc.B * 0.11));
+                    Color nc = Color.FromArgb(oc.A, grayScale, grayScale, grayScale);
+                    d.SetPixel(i, x, nc);
+                }
+            }
+
+
+            var ocr = new TesseractEngine("./tessdata", "eng", EngineMode.TesseractOnly);
+
+            var page = ocr.Process(d);
+
+
+            d.Save("Test.png");
+            ExtractedPart.Save("Test2.png");
+
+            return page.GetText();
+        }
+
         public static int GetEnemyCE()
         {
             //Required ColourSpace == GrayScale
             //string boxText = ImageText(TextConstants.LEAGUE_ENEMY_CE_START, TextConstants.LEAGUE_PLAYER_CE_SIZE, true, true, false, false);
 
-            //int x = TextConstants.LEAGUE_ENEMY_CE_START.X;
-            //int y = TextConstants.LEAGUE_ENEMY_CE_START.Y;
+            int x = TextConstants.LEAGUE_ENEMY_CE_START.X;
+            int y = TextConstants.LEAGUE_ENEMY_CE_START.Y;
 
-            //string[] CEArray = new string[3];
+            string[] CEArrayString = new string[3];
+            int[] CEArray = new int[3];
 
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    y = TextConstants.LEAGUE_ENEMY_CE_START.Y + (i * 100);
-            //    var newPoint = new Point(x, y);
-            //    CEArray[i] = ImageText(newPoint, TextConstants.LEAGUE_PLAYER_CE_SIZE, true, true, true, false);
-            //}
+            for (int i = 0; i < 3; i++)
+            {
+                y = TextConstants.LEAGUE_ENEMY_CE_START.Y + (i * 100);
+                var newPoint = new Point(x, y);
+                CEArrayString[i] = ImageText(newPoint, TextConstants.LEAGUE_PLAYER_CE_SIZE, true, true, true, false);
+            }
 
-            //Console.WriteLine(CEArray[0]);
-            //Console.WriteLine(CEArray[1]);
-            //Console.WriteLine(CEArray[2]);
+            Console.WriteLine(CEArrayString[0]);
+            Console.WriteLine(CEArrayString[1]);
+            Console.WriteLine(CEArrayString[2]);
+            
+            //Converts the Strings into Arrays
+            for (int i = 0; i < 3; i++)
+            {
+                CEArray[i] = StringToInt(CEArrayString[i]);
+            }
 
-            string boxText = ImageText(TextConstants.ENEMY_PROFILE_CE_START, TextConstants.ENEMY_PROFILE_CE_SIZE, true, true, true, true);
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Before: " + CEArray[i].ToString());
+                if (CEArray[i] == -1)
+                {
+                    Main.Sleep(1);
+                    x = TextConstants.LEAGUE_ENEMY_CE_START.X;
+                    y = TextConstants.LEAGUE_ENEMY_CE_START.Y + (i * 100);
+                    var PlayerLocation = new Point(x, y);
+                    MouseHandler.MoveCursor(PlayerLocation, true);
+                    Main.Sleep(2);
+                    CEArrayString[i] = ImageText(TextConstants.ENEMY_PROFILE_CE_START, TextConstants.ENEMY_PROFILE_CE_SIZE, true, true, true, true);
+                    CEArray[i] = StringToInt(CEArrayString[i]);
+                    Main.Sleep(1);
+                    MouseHandler.MoveCursor(LocationConstants.HOME_BOTTOM_BATTLE, true); //Closes Profile Menu
+                }
+                Console.WriteLine("After: " + CEArray[i].ToString());
+            }
 
-            MessageBox.Show(boxText);
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine(CEArray[i]);
+            }
+
 
             return 1;
+        }
+
+        public static String RemoveWhiteSpace(string Text)
+        {
+            //Going To Add More Checks Later
+            return Text.Replace(" ", string.Empty);
         }
 
         public static String GymBattleCheck(int Multiplier = 0)
@@ -116,7 +187,7 @@ namespace IdleTrainerBot.Functions
         public static String HomeBoss()
         {
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
-            string BossStatus = ImageText(TextConstants.HOME_BOSS_START, TextConstants.HOME_BOSS_SIZE, false, true, true, true);
+            string BossStatus = ImageToText2(TextConstants.HOME_BOSS_START, TextConstants.HOME_BOSS_SIZE, false, true, true, true);
             BossStatus = BossStatus.ToLower();
 
             MessageBox.Show(BossStatus);
