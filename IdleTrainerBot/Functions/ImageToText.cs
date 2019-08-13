@@ -51,6 +51,34 @@ namespace IdleTrainerBot.Functions
             return Results.Text;
         }
 
+        public static int GetEnemyCE()
+        {
+            //Required ColourSpace == GrayScale
+            //string boxText = ImageText(TextConstants.LEAGUE_ENEMY_CE_START, TextConstants.LEAGUE_PLAYER_CE_SIZE, true, true, false, false);
+
+            //int x = TextConstants.LEAGUE_ENEMY_CE_START.X;
+            //int y = TextConstants.LEAGUE_ENEMY_CE_START.Y;
+
+            //string[] CEArray = new string[3];
+
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    y = TextConstants.LEAGUE_ENEMY_CE_START.Y + (i * 100);
+            //    var newPoint = new Point(x, y);
+            //    CEArray[i] = ImageText(newPoint, TextConstants.LEAGUE_PLAYER_CE_SIZE, true, true, true, false);
+            //}
+
+            //Console.WriteLine(CEArray[0]);
+            //Console.WriteLine(CEArray[1]);
+            //Console.WriteLine(CEArray[2]);
+
+            string boxText = ImageText(TextConstants.ENEMY_PROFILE_CE_START, TextConstants.ENEMY_PROFILE_CE_SIZE, true, true, true, true);
+
+            MessageBox.Show(boxText);
+
+            return 1;
+        }
+
         public static String GymBattleCheck(int Multiplier = 0)
         {
             /*

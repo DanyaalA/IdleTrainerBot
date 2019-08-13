@@ -34,9 +34,17 @@ namespace IdleTrainerBot.Functions
 
             Main.ResetToHome();
 
-            OpenObjects.OpenSkyPilar();
+            OpenObjects.OpenBattleLeague();
 
-            AttackSkyPillar();
+            AttackBattleLeague();
+
+        }
+
+        public static void AttackBattleLeague()
+        {
+            //Similar to Main Menu Boss where it doesn't matter if you win or lose it just attacks the lowest number
+            string PlayerAttackCE = ImageToText.ImageText(TextConstants.LEAGUE_PLAYER_CE_START, TextConstants.LEAGUE_PLAYER_CE_SIZE, true, true, false, false);
+            int PlayerCE = Convert.ToInt32(PlayerAttackCE);
 
         }
 
@@ -211,6 +219,7 @@ namespace IdleTrainerBot.Functions
             MouseHandler.MoveCursor(LocationConstants.HOME_BOSS_BATTLE_NEXT, true);
 
         }
+
 
         public static void AttackSkyPillar()
         {

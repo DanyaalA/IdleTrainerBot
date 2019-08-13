@@ -118,7 +118,7 @@ namespace IdleTrainerBot
 
         private void TextTest_Click(object sender, RoutedEventArgs e)
         {
-            ImageToText.HomeBoss();
+            ImageToText.GetEnemyCE();
         }
     }
 }
