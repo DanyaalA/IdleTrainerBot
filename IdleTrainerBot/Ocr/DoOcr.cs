@@ -13,7 +13,7 @@ namespace IdleTrainerBot.Ocr
 {
     class DoOcr
     {
-        public static async Task<String> DoAsync(System.Drawing.Point Location, System.Drawing.Size SizeOfRec)
+        public static async Task<String> DoAsync(System.Drawing.Point Location, System.Drawing.Size SizeOfRec, string OCREngine = "1")
         {
             Rectangle section = new Rectangle(Location, SizeOfRec);
 
@@ -36,7 +36,7 @@ namespace IdleTrainerBot.Ocr
                 MultipartFormDataContent form = new MultipartFormDataContent();
                 form.Add(new StringContent("34209c846288957"), "apikey"); //Added api key in form data // WHEN SERVER IS UP GET API KEY FROM SERVER
                 form.Add(new StringContent("eng"), "language");
-                //form.Add(new StringContent("1"), "OCREngine");
+                form.Add(new StringContent(OCREngine), "OCREngine");
 
                 ExtractedPart.Save("Image.png");
                 byte[] imageData = File.ReadAllBytes("Image.png");

@@ -20,13 +20,13 @@ namespace IdleTrainerBot.Functions
         {
             return "z";
         }
-        public static String GetOcrResponse(Point Location, Size SizeOfRec)
+        public static String GetOcrResponse(Point Location, Size SizeOfRec, string OCREngineMode = "1")
         {
             string APIResponse = string.Empty;
 
             Task task = Task.Factory.StartNew(() =>
             {
-                APIResponse = DoOcr.DoAsync(Location, SizeOfRec).Result;
+                APIResponse = DoOcr.DoAsync(Location, SizeOfRec, OCREngineMode).Result;
             });
 
             task.Wait();
@@ -218,7 +218,7 @@ namespace IdleTrainerBot.Functions
             Main.Sleep(1);
             MouseHandler.MoveCursor(LocationConstants.GLOBAL_LEVEL_BAR, true);
             Main.Sleep(1);
-            string playerLevel = ImageText(TextConstants.LEVEL_START, TextConstants.LEVEL_START_SIZE, false, true, false, false);
+            string playerLevel = GetOcrResponse(TextConstants.LEVEL_START, TextConstants.LEVEL_START_SIZE, "2");
             MessageBox.Show(playerLevel);
 
             return playerLevel;
@@ -227,7 +227,7 @@ namespace IdleTrainerBot.Functions
         public static int GetGemAmount()
         {
             //Requires ColorSpace == GrayScale
-            string GemAmount = ImageText(TextConstants.GEM_START, TextConstants.GEM_START_SIZE, false, true, false, false);
+            string GemAmount = GetOcrResponse(TextConstants.GEM_START, TextConstants.GEM_START_SIZE, "2");
             MessageBox.Show(GemAmount);
             try
             {
@@ -242,7 +242,7 @@ namespace IdleTrainerBot.Functions
         public static int GetGoldAmount()
         {
             //Requires ColorSpace == GrayScale || Color (This Means a check needs to be added to see if the value is -1 retry with ColorSpace == Color.
-            string MoneyText = ImageText(TextConstants.GOLD_START, TextConstants.GOLD_START_SIZE, false, true, false, false);
+            string MoneyText = GetOcrResponse(TextConstants.GOLD_START, TextConstants.GOLD_START_SIZE, "2");
             MoneyText = MoneyText.ToLower();
             MessageBox.Show(MoneyText);
 
