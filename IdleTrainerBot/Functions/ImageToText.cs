@@ -8,11 +8,17 @@ using IronOcr;
 using System.Drawing;
 using IdleTrainerBot.Constants;
 using Tesseract;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.IO;
+using IdleTrainerBot.Ocr;
 
 namespace IdleTrainerBot.Functions
 {
     class ImageToText
     {
+        static string OCRText;
+
         public static String ImageText(Point Location, Size SizeOfRec, bool EnhanceContrast = true, bool EnchanceResolution = true, bool Advanced = true, bool RotateStraight = false)
         {
             Rectangle section = new Rectangle(Location, SizeOfRec);
@@ -23,6 +29,8 @@ namespace IdleTrainerBot.Functions
             Graphics G = Graphics.FromImage(ExtractedPart);
 
             G.DrawImage(ScreenCap, 0, 0, section, GraphicsUnit.Pixel);
+
+
 
             AdvancedOcr.OcrStrategy StratType = AdvancedOcr.OcrStrategy.Fast;
 
@@ -57,32 +65,19 @@ namespace IdleTrainerBot.Functions
             Rectangle section = new Rectangle(Location, SizeOfRec);
 
             Bitmap ScreenCap = WindowCapture.CaptureApplication("Nox");
+
             Bitmap ExtractedPart = new Bitmap(section.Width, section.Height);
 
             Graphics G = Graphics.FromImage(ExtractedPart);
 
             G.DrawImage(ScreenCap, 0, 0, section, GraphicsUnit.Pixel);
 
-            Bitmap d = new Bitmap(ExtractedPart.Width, ExtractedPart.Height);
-
-            for (int i = 0; i < ExtractedPart.Width; i++)
-            {
-                for (int x = 0; x < ExtractedPart.Height; x++)
-                {
-                    Color oc = ExtractedPart.GetPixel(i, x);
-                    int grayScale = (int)((oc.R * 0.3) + (oc.G * 0.59) + (oc.B * 0.11));
-                    Color nc = Color.FromArgb(oc.A, grayScale, grayScale, grayScale);
-                    d.SetPixel(i, x, nc);
-                }
-            }
 
 
             var ocr = new TesseractEngine("./tessdata", "eng", EngineMode.TesseractOnly);
 
-            var page = ocr.Process(d);
+            var page = ocr.Process(ExtractedPart);
 
-
-            d.Save("Test.png");
             ExtractedPart.Save("Test2.png");
 
             return page.GetText();
@@ -109,7 +104,7 @@ namespace IdleTrainerBot.Functions
             Console.WriteLine(CEArrayString[0]);
             Console.WriteLine(CEArrayString[1]);
             Console.WriteLine(CEArrayString[2]);
-            
+
             //Converts the Strings into Arrays
             for (int i = 0; i < 3; i++)
             {
@@ -183,14 +178,58 @@ namespace IdleTrainerBot.Functions
             return boxText;
         }
 
+        
+
+        public static String UpdateVar(Point Location, Size SizeOfRec)
+        {
+            //string result = await DoOcr.DoAsync(Location, SizeOfRec);
+            //OCRText = result;
+
+            string APIResponse = string.Empty;
+
+            Task task = Task.Factory.StartNew(() =>
+            {
+                APIResponse = DoOcr.DoAsync(Location, SizeOfRec).Result;
+            });
+
+            task.Wait();
+
+            return APIResponse;
+        }
 
         public static String HomeBoss()
         {
             WindowCapture.CaptureApplication(GlobalVariables.GLOBAL_PROC_NAME);
-            string BossStatus = ImageToText2(TextConstants.HOME_BOSS_START, TextConstants.HOME_BOSS_SIZE, false, true, true, true);
+
+
+            string BossStat = string.Empty;
+            //Task task = Task.Factory.StartNew(() =>
+            //{
+            //    UpdateVar(TextConstants.HOME_BOSS_START, TextConstants.HOME_BOSS_SIZE);
+            //});
+
+            //Task task = Task.Factory.StartNew(() =>
+            //{
+            //    BossStat = DoOcr.DoAsync(TextConstants.HOME_BOSS_START, TextConstants.HOME_BOSS_SIZE).Result;
+            //});
+
+            //task.Wait();
+
+            string BossStatus;
+
+            BossStatus = UpdateVar(TextConstants.HOME_BOSS_START, TextConstants.HOME_BOSS_SIZE);
+
+            MessageBox.Show("The Finale: " + BossStatus);
+
+            //Main.Sleep(5);
+
+            
             BossStatus = BossStatus.ToLower();
 
-            MessageBox.Show(BossStatus);
+            BossStatus = RemoveWhiteSpace(BossStatus);
+            BossStatus = BossStatus.Split()[0];
+
+
             if (BossStatus.EndsWith("battle"))
             {
                 BossStatus = "battle";

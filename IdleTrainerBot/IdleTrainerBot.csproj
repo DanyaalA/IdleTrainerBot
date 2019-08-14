@@ -43,6 +43,9 @@
     <Reference Include="IronOcr, Version=4.4.0.21181, Culture=neutral, PublicKeyToken=5f366048dc436899, processorArchitecture=MSIL">
       <HintPath>..\packages\IronOcr.4.4.0\lib\net40\IronOcr.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -86,10 +89,13 @@
     <Compile Include="Functions\KeyHandler.cs" />
     <Compile Include="Functions\Main.cs" />
     <Compile Include="Functions\MouseHandler.cs" />
+    <Compile Include="Functions\OCRResult.cs" />
     <Compile Include="Functions\OpenObjects.cs" />
     <Compile Include="Functions\PixelChecker.cs" />
     <Compile Include="Functions\UpdatePlayerInfo.cs" />
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="Ocr\DoOcr.cs" />
+    <Compile Include="Ocr\OCRResult.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="WindowCapture.cs" />
     <Compile Include="MainWindow.xaml.cs">
