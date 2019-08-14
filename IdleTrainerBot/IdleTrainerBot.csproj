@@ -120,15 +120,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="tessdata\eng.cube.bigrams" />
-    <None Include="tessdata\eng.cube.fold" />
-    <None Include="tessdata\eng.cube.lm" />
-    <None Include="tessdata\eng.cube.nn" />
-    <None Include="tessdata\eng.cube.params" />
-    <None Include="tessdata\eng.cube.size" />
-    <None Include="tessdata\eng.cube.word-freq" />
-    <None Include="tessdata\eng.tesseract_cube.nn" />
-    <None Include="tessdata\eng.traineddata" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
