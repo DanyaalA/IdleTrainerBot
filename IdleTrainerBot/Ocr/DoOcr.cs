@@ -36,10 +36,14 @@ namespace IdleTrainerBot.Ocr
                 MultipartFormDataContent form = new MultipartFormDataContent();
                 form.Add(new StringContent("34209c846288957"), "apikey"); //Added api key in form data // WHEN SERVER IS UP GET API KEY FROM SERVER
                 form.Add(new StringContent("eng"), "language");
-                form.Add(new StringContent("1"), "OCREngine");
+                //form.Add(new StringContent("1"), "OCREngine");
 
                 ExtractedPart.Save("Image.png");
                 byte[] imageData = File.ReadAllBytes("Image.png");
+                
+                //Make Sure To Enable this on Release
+                //File.Delete("Image.png");
+
                 form.Add(new ByteArrayContent(imageData, 0, imageData.Length), "image", "image.jpg");
 
                 HttpResponseMessage response = await httpClient.PostAsync("https://api.ocr.space/Parse/Image", form);

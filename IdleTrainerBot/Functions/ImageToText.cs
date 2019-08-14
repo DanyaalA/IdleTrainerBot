@@ -85,10 +85,11 @@ namespace IdleTrainerBot.Functions
         public static String RemoveWhiteSpace(string Text)
         {
             //Going To Add More Checks Later
+            Text = Text.Split()[0];
             return Text.Replace(" ", string.Empty);
         }
 
-        public static String GymBattleCheck(int Multiplier = 0)
+        public static String GymBattleCheck(out Point Section, int Multiplier = 0, bool secondCheck = false)
         {
             /*
              * 1. Read Text From Bottom To Top (Only Reads Text From A Sepcific Box Size on the right hand side)
@@ -99,27 +100,59 @@ namespace IdleTrainerBot.Functions
 
             //Requires ColourSpace == GrayScale
 
+            Section = new Point(0, 0);
+
             if (Multiplier == 3) //Check to make sure Function doesn't keep recalling it self
             {
-                return "Invalid";
+                if (secondCheck == true)
+                {
+                    Console.WriteLine("Returning");
+                    return "Invalid";
+                }
+
+                Multiplier = 0;
+
+                secondCheck = true;
             }
 
             int x = TextConstants.GYM_BATTLE_START.X;
             int y = TextConstants.GYM_BATTLE_START.Y;
+
+            Size boxSize = TextConstants.GYM_BATTLE_SIZE;
+
+            if (secondCheck)
+            {
+                x = TextConstants.GYM_BATTLE2_START.X;
+                y = TextConstants.GYM_BATTLE2_START.Y;
+                boxSize = TextConstants.GYM_BATTLE2_SIZE;
+            }
 
             //x = x * Multiplier; No Need to Change X
             y = y - (254 * Multiplier);
 
             Point NewPoint = new Point(x, y);
 
-            string boxText = GetOcrResponse(NewPoint, TextConstants.GYM_BATTLE_SIZE);
+            string boxText = GetOcrResponse(NewPoint, boxSize);
 
-            if (boxText != "Battle")
+            boxText = boxText.ToLower();
+
+            boxText = RemoveWhiteSpace(boxText);
+
+            Console.WriteLine(boxText);
+
+            Section = NewPoint;
+
+            if (boxText == "battie")
             {
-                return GymBattleCheck(Multiplier + 1);
+                boxText = "battle"; // 10/10 times battle is read as Battie
             }
 
-            MessageBox.Show(boxText);
+            if (boxText != "battle")
+            {
+                return GymBattleCheck(out Section, Multiplier + 1, secondCheck);
+            }
+
+            
 
             return boxText;
         }

@@ -73,13 +73,15 @@ namespace IdleTrainerBot.Functions
 
                     if (!PixelChecker.SearchPixel(ColorConstants.GYM_BATTLE, out Location))
                     {
-                        string BattleTest = ImageToText.GymBattleCheck();
-                        if (BattleTest != "Battle")
+                        string BattleTest = ImageToText.GymBattleCheck(out Location);
+                        if (BattleTest != "battle")
                         {
                             GymAttackHandler();
                         }
 
-                        MouseHandler.MoveCursor(TextConstants.GYM_BATTLE_START, true);
+                        Main.Sleep(1);
+
+                        MouseHandler.MoveCursor(Location, true);
                     }
                     else
                     {
