@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using IronOcr;
 using System.Drawing;
 using IdleTrainerBot.Constants;
-using Tesseract;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.IO;
@@ -17,72 +15,20 @@ namespace IdleTrainerBot.Functions
 {
     class ImageToText
     {
-        static string OCRText;
 
-        public static String ImageText(Point Location, Size SizeOfRec, bool EnhanceContrast = true, bool EnchanceResolution = true, bool Advanced = true, bool RotateStraight = false)
+        public static String GetOcrResponse(Point Location, Size SizeOfRec)
         {
-            Rectangle section = new Rectangle(Location, SizeOfRec);
+            string APIResponse = string.Empty;
 
-            Bitmap ScreenCap = WindowCapture.CaptureApplication("Nox");
-            Bitmap ExtractedPart = new Bitmap(section.Width, section.Height);
-
-            Graphics G = Graphics.FromImage(ExtractedPart);
-
-            G.DrawImage(ScreenCap, 0, 0, section, GraphicsUnit.Pixel);
-
-
-
-            AdvancedOcr.OcrStrategy StratType = AdvancedOcr.OcrStrategy.Fast;
-
-            if (Advanced)
+            Task task = Task.Factory.StartNew(() =>
             {
-                StratType = AdvancedOcr.OcrStrategy.Advanced;
-            }
+                APIResponse = DoOcr.DoAsync(Location, SizeOfRec).Result;
+            });
 
-            var Ocr = new AdvancedOcr()
-            {
-                CleanBackgroundNoise = false,
-                EnhanceContrast = EnhanceContrast,
-                EnhanceResolution = EnchanceResolution,
-                Language = IronOcr.Languages.English.OcrLanguagePack,
-                Strategy = StratType,
-                ColorSpace = AdvancedOcr.OcrColorSpace.GrayScale,
-                DetectWhiteTextOnDarkBackgrounds = true,
-                InputImageType = AdvancedOcr.InputTypes.AutoDetect,
-                RotateAndStraighten = RotateStraight,
-                ReadBarCodes = false,
-                ColorDepth = 24
-            };
-            var Results = Ocr.Read(ExtractedPart);
+            task.Wait();
 
-            ExtractedPart.Save("Test.bmp");
-
-            return Results.Text;
+            return APIResponse;
         }
-
-        public static String ImageToText2(Point Location, Size SizeOfRec, bool EnhanceContrast = true, bool EnchanceResolution = true, bool Advanced = true, bool RotateStraight = false)
-        {
-            Rectangle section = new Rectangle(Location, SizeOfRec);
-
-            Bitmap ScreenCap = WindowCapture.CaptureApplication("Nox");
-
-            Bitmap ExtractedPart = new Bitmap(section.Width, section.Height);
-
-            Graphics G = Graphics.FromImage(ExtractedPart);
-
-            G.DrawImage(ScreenCap, 0, 0, section, GraphicsUnit.Pixel);
-
-
-
-            var ocr = new TesseractEngine("./tessdata", "eng", EngineMode.TesseractOnly);
-
-            var page = ocr.Process(ExtractedPart);
-
-            ExtractedPart.Save("Test2.png");
-
-            return page.GetText();
-        }
-
         public static int GetEnemyCE()
         {
             //Required ColourSpace == GrayScale
@@ -178,24 +124,7 @@ namespace IdleTrainerBot.Functions
             return boxText;
         }
 
-        
-
-        public static String UpdateVar(Point Location, Size SizeOfRec)
-        {
-            //string result = await DoOcr.DoAsync(Location, SizeOfRec);
-            //OCRText = result;
-
-            string APIResponse = string.Empty;
-
-            Task task = Task.Factory.StartNew(() =>
-            {
-                APIResponse = DoOcr.DoAsync(Location, SizeOfRec).Result;
-            });
-
-            task.Wait();
-
-            return APIResponse;
-        }
+       
 
         public static String HomeBoss()
         {
@@ -217,7 +146,7 @@ namespace IdleTrainerBot.Functions
 
             string BossStatus;
 
-            BossStatus = UpdateVar(TextConstants.HOME_BOSS_START, TextConstants.HOME_BOSS_SIZE);
+            BossStatus = GetOcrResponse(TextConstants.HOME_BOSS_START, TextConstants.HOME_BOSS_SIZE);
 
             MessageBox.Show("The Finale: " + BossStatus);
 
