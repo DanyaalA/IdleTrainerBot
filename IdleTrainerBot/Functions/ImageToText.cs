@@ -16,6 +16,10 @@ namespace IdleTrainerBot.Functions
     class ImageToText
     {
 
+        public static string ImageText(Point Location, Size SizeOfRec, bool x, bool y, bool z, bool f)
+        {
+            return "z";
+        }
         public static String GetOcrResponse(Point Location, Size SizeOfRec)
         {
             string APIResponse = string.Empty;
@@ -44,7 +48,7 @@ namespace IdleTrainerBot.Functions
             {
                 y = TextConstants.LEAGUE_ENEMY_CE_START.Y + (i * 100);
                 var newPoint = new Point(x, y);
-                CEArrayString[i] = ImageText(newPoint, TextConstants.LEAGUE_PLAYER_CE_SIZE, true, true, true, false);
+                CEArrayString[i] = GetOcrResponse(newPoint, TextConstants.LEAGUE_PLAYER_CE_SIZE);
             }
 
             Console.WriteLine(CEArrayString[0]);
@@ -68,7 +72,7 @@ namespace IdleTrainerBot.Functions
                     var PlayerLocation = new Point(x, y);
                     MouseHandler.MoveCursor(PlayerLocation, true);
                     Main.Sleep(2);
-                    CEArrayString[i] = ImageText(TextConstants.ENEMY_PROFILE_CE_START, TextConstants.ENEMY_PROFILE_CE_SIZE, true, true, true, true);
+                    CEArrayString[i] = GetOcrResponse(TextConstants.ENEMY_PROFILE_CE_START, TextConstants.ENEMY_PROFILE_CE_SIZE);
                     CEArray[i] = StringToInt(CEArrayString[i]);
                     Main.Sleep(1);
                     MouseHandler.MoveCursor(LocationConstants.HOME_BOTTOM_BATTLE, true); //Closes Profile Menu
