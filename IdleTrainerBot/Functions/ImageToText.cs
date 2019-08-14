@@ -35,8 +35,6 @@ namespace IdleTrainerBot.Functions
         }
         public static int GetEnemyCE()
         {
-            //Required ColourSpace == GrayScale
-            //string boxText = ImageText(TextConstants.LEAGUE_ENEMY_CE_START, TextConstants.LEAGUE_PLAYER_CE_SIZE, true, true, false, false);
 
             int x = TextConstants.LEAGUE_ENEMY_CE_START.X;
             int y = TextConstants.LEAGUE_ENEMY_CE_START.Y;
@@ -44,40 +42,35 @@ namespace IdleTrainerBot.Functions
             string[] CEArrayString = new string[3];
             int[] CEArray = new int[3];
 
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    y = TextConstants.LEAGUE_ENEMY_CE_START.Y + (i * 100);
+            //    var newPoint = new Point(x, y);
+            //    CEArrayString[i] = GetOcrResponse(newPoint, TextConstants.LEAGUE_PLAYER_CE_SIZE);
+            //}
+
+            //Console.WriteLine(CEArrayString[0]);
+            //Console.WriteLine(CEArrayString[1]);
+            //Console.WriteLine(CEArrayString[2]);
+
+            ////Converts the Strings into Arrays
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    CEArray[i] = StringToInt(CEArrayString[i]);
+            //}
+
             for (int i = 0; i < 3; i++)
             {
+                Main.Sleep(1);
+                x = TextConstants.LEAGUE_ENEMY_CE_START.X;
                 y = TextConstants.LEAGUE_ENEMY_CE_START.Y + (i * 100);
-                var newPoint = new Point(x, y);
-                CEArrayString[i] = GetOcrResponse(newPoint, TextConstants.LEAGUE_PLAYER_CE_SIZE);
-            }
-
-            Console.WriteLine(CEArrayString[0]);
-            Console.WriteLine(CEArrayString[1]);
-            Console.WriteLine(CEArrayString[2]);
-
-            //Converts the Strings into Arrays
-            for (int i = 0; i < 3; i++)
-            {
+                var PlayerLocation = new Point(x, y);
+                MouseHandler.MoveCursor(PlayerLocation, true);
+                Main.Sleep(2);
+                CEArrayString[i] = GetOcrResponse(TextConstants.ENEMY_PROFILE_CE_START, TextConstants.ENEMY_PROFILE_CE_SIZE);
                 CEArray[i] = StringToInt(CEArrayString[i]);
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                Console.WriteLine("Before: " + CEArray[i].ToString());
-                if (CEArray[i] == -1)
-                {
-                    Main.Sleep(1);
-                    x = TextConstants.LEAGUE_ENEMY_CE_START.X;
-                    y = TextConstants.LEAGUE_ENEMY_CE_START.Y + (i * 100);
-                    var PlayerLocation = new Point(x, y);
-                    MouseHandler.MoveCursor(PlayerLocation, true);
-                    Main.Sleep(2);
-                    CEArrayString[i] = GetOcrResponse(TextConstants.ENEMY_PROFILE_CE_START, TextConstants.ENEMY_PROFILE_CE_SIZE);
-                    CEArray[i] = StringToInt(CEArrayString[i]);
-                    Main.Sleep(1);
-                    MouseHandler.MoveCursor(LocationConstants.HOME_BOTTOM_BATTLE, true); //Closes Profile Menu
-                }
-                Console.WriteLine("After: " + CEArray[i].ToString());
+                Main.Sleep(1);
+                MouseHandler.MoveCursor(LocationConstants.HOME_BOTTOM_BATTLE, true); //Closes Profile Menu
             }
 
             for (int i = 0; i < 3; i++)
@@ -119,12 +112,15 @@ namespace IdleTrainerBot.Functions
 
             Point NewPoint = new Point(x, y);
 
-            string boxText = ImageText(NewPoint, TextConstants.GYM_BATTLE_SIZE, true, true, false, false);
+            string boxText = GetOcrResponse(NewPoint, TextConstants.GYM_BATTLE_SIZE);
 
             if (boxText != "Battle")
             {
                 return GymBattleCheck(Multiplier + 1);
             }
+
+            MessageBox.Show(boxText);
+
             return boxText;
         }
 

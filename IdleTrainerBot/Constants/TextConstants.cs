@@ -25,11 +25,11 @@ namespace IdleTrainerBot.Constants
         //Battle League Stuff (Alot of them So i made a section for it)
         public static Point LEAGUE_PLAYER_CE_START = new Point(198, 359);
         public static Point LEAGUE_ENEMY_CE_START = new Point(200, 505);
-        public static Point ENEMY_PROFILE_CE_START = new Point(433, 300);
+        public static Point ENEMY_PROFILE_CE_START = new Point(431, 297);
 
         public static Size LEAGUE_PLAYER_CE_SIZE = new Size(88, 28);
         public static Size LEAGUE_ENEMY_CE_SIZE = new Size(91, 28);
-        public static Size ENEMY_PROFILE_CE_SIZE = new Size(77, 22);
+        public static Size ENEMY_PROFILE_CE_SIZE = new Size(77, 25);
 
     }
 }
